@@ -1,0 +1,23 @@
+
+Running 16 tests using 1 worker
+
+(node:22110) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/advanced-races.spec.ts:83:1 › delayed saved run cannot overwrite a newer series selection (780ms)
+  ✓   2 e2e/advanced-races.spec.ts:99:1 › editing controls while saved runs load keeps saved-run choices available (407ms)
+  ✓   3 e2e/advanced-races.spec.ts:122:1 › delayed comparison cannot populate a newly selected series pair (921ms)
+  ✓   4 e2e/advanced.spec.ts:24:1 › advanced training, measured quantiles, SHAP, export, independent series and saved runs (5.2s)
+  ✓   5 e2e/advanced.spec.ts:94:1 › mapped target and time columns support monthly forecasting through the UI (2.4s)
+  ✓   6 e2e/completion.spec.ts:3:1 › Kaggle sales upload works with default column settings after changing datasets (942ms)
+  ✓   7 e2e/completion.spec.ts:60:1 › price-free custom predictors reach statistics, randomized training, SHAP and inventory (2.4s)
+  ✓   8 e2e/completion.spec.ts:163:1 › saved simulation restores all controls and what-if horizon recalculates demand (428ms)
+  ✓   9 e2e/inventory.spec.ts:30:1 › forecast to replenishment, simulations, policies, what-if and CSV export (1.1s)
+  ✓  10 e2e/inventory.spec.ts:133:1 › batch CSV, risk filter, saved plan and missing costs remain explicit (779ms)
+  ✓  11 e2e/inventory.spec.ts:181:1 › mobile inventory layout and uncovered lead-time validation (598ms)
+  ✓  12 e2e/workflows.spec.ts:16:1 › demo → quality → analytics → measured forecast → model comparison (3.0s)
+  ✓  13 e2e/workflows.spec.ts:94:1 › invalid CSV shows an error and valid upload enables forecasting (1.4s)
+  ✓  14 e2e/workflows.spec.ts:125:1 › mobile layout supports navigation and forecasting without horizontal overflow (1.5s)
+  ✓  15 e2e/workflows.spec.ts:148:1 › explicit zero policy stays visible when returning to a saved forecast (1.2s)
+  ✓  16 e2e/workflows.spec.ts:184:1 › leaving the forecast page discards an in-flight result (879ms)
+
+  16 passed (24.5s)

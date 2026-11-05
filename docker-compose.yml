@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-forecastiq}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-forecastiq_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-forecastiq}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build:
+      context: .
+      args:
+        INSTALL_NEURAL: ${INSTALL_NEURAL:-false}
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-forecastiq}:${POSTGRES_PASSWORD:-forecastiq_dev}@db:5432/${POSTGRES_DB:-forecastiq}
+      STORAGE_DIR: /app/storage
+      MAX_DATASET_ROWS: ${MAX_DATASET_ROWS:-1000000}
+      MAX_TRAINING_PERIODS: ${MAX_TRAINING_PERIODS:-5000}
+      CORS_ORIGINS: http://localhost:${FRONTEND_PORT:-5173},http://127.0.0.1:${FRONTEND_PORT:-5173}
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - dataset_storage:/app/storage
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-5173}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+volumes:
+  postgres_data:
+  dataset_storage:

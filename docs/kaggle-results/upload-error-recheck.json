@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-10-08T01:13:19.362Z",
+  "results": [
+    {
+      "file": "test.csv",
+      "status": 422,
+      "error": "Dataset validation failed. Missing required columns: product_id, store_id, units_sold."
+    },
+    {
+      "file": "sample_submission.csv",
+      "status": 422,
+      "error": "Dataset validation failed. Missing required columns: date, product_id, store_id, units_sold."
+    },
+    {
+      "file": "train.csv",
+      "status": 201,
+      "dataset_id": "35d4f83f-20c7-44a1-ae38-34a7751711a1",
+      "rows": 913000,
+      "mapping": {
+        "date": "date",
+        "units_sold": "sales",
+        "store_id": "store",
+        "product_id": "item",
+        "price": "price"
+      }
+    }
+  ],
+  "browser_errors": []
+}

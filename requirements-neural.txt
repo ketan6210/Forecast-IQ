@@ -1,0 +1,2 @@
+# Optional CPU neural candidate. Short-series fallback does not import PyTorch.
+torch>=2.6,<3

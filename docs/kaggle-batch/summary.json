@@ -1,0 +1,65 @@
+{
+  "completed_series": 500,
+  "prediction_rows": 45000,
+  "test_period": {
+    "start": "2018-01-01",
+    "end": "2018-03-31"
+  },
+  "historical_test_period": {
+    "start": "2017-10-03",
+    "end": "2017-12-31"
+  },
+  "historical_test_rows": 45000,
+  "aggregate_test_wape": 0.1481130197125162,
+  "aggregate_test_mae": 8.091608459520605,
+  "aggregate_test_rmse": 10.525050244418178,
+  "aggregate_test_smape": 0.16198591107366936,
+  "aggregate_interval_coverage": 0.7391333333333333,
+  "median_series_test_wape": 0.1524155991703121,
+  "total_forecast_units": 2326578.847716947,
+  "champion_counts": {
+    "xgboost": 59,
+    "lightgbm": 441
+  },
+  "candidate_failures": [],
+  "note": "Metrics use held-out historical sales. Kaggle test.csv has no labels; sample_submission.csv supplies IDs and output format only. Predictions are daily P50 estimates, not guaranteed quantities. No Kaggle score or submission is claimed.",
+  "completed_at": "2026-10-06T03:11:52.811572+00:00",
+  "wall_seconds_this_execution": 497.4267092080263,
+  "configuration": {
+    "horizon": 90,
+    "folds": 3,
+    "frequency": "daily",
+    "window": "expanding",
+    "models": [
+      "ets",
+      "lightgbm",
+      "xgboost"
+    ],
+    "tune": false,
+    "tuning_seed": 42
+  },
+  "provenance": {
+    "dataset_id": "ce584990-809f-468f-80fa-727d34d4a0de",
+    "configuration": {
+      "horizon": 90,
+      "folds": 3,
+      "frequency": "daily",
+      "window": "expanding",
+      "models": [
+        "ets",
+        "lightgbm",
+        "xgboost"
+      ],
+      "tune": false,
+      "tuning_seed": 42
+    },
+    "source_sha256": "d9662a47fa145f7e06094e2df58b94bd7c49c4341c0ce8230c7006be937ceb44",
+    "input_sha256": {
+      "train.csv": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed",
+      "test.csv": "16eb2eec677628c8ed62312a9d6749ebf46f59196dd2fece6fd1e5c147a918fb",
+      "sample_submission.csv": "b797330d1171538cf749abf6a76bef6743783d6eb74f81722465d86cf062ad3f"
+    },
+    "storage": "/Users/ketan/Desktop/ForecastIQ/storage/kaggle-batch",
+    "live_app_database_modified": false
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "measured_at": "2026-09-27T18:13:14.358334+00:00",
+  "transport": "HTTP to Docker FastAPI with PostgreSQL",
+  "health": {
+    "status": "ok",
+    "phase": 2
+  },
+  "run_id": "bd1b620e-a2ed-42c0-8db7-a01906489aee",
+  "dataset_id": "7af5a44f-1845-42eb-bdfb-a7313449b2fe",
+  "configuration": {
+    "dataset_id": "7af5a44f-1845-42eb-bdfb-a7313449b2fe",
+    "store_id": "SYNTHETIC",
+    "product_id": "LONG_HISTORY",
+    "horizon": 14,
+    "folds": 3,
+    "window": "expanding",
+    "window_size": 180,
+    "frequency": "auto",
+    "missing_policy": "flag",
+    "models": [
+      "naive",
+      "seasonal_naive",
+      "moving_average",
+      "nbeats",
+      "lightgbm",
+      "xgboost"
+    ],
+    "tune": true,
+    "neural_epochs": 12
+  },
+  "champion": "xgboost",
+  "model_statuses": {
+    "naive": "ok",
+    "seasonal_naive": "ok",
+    "moving_average": "ok",
+    "nbeats": "ok",
+    "lightgbm": "ok",
+    "xgboost": "ok"
+  },
+  "neural_artifact": {
+    "model_version": "2.0.0",
+    "training_timestamp": "2026-09-27T18:13:13.946790+00:00",
+    "forecast_horizon": 14,
+    "frequency": "D",
+    "dataset_id": "7af5a44f-1845-42eb-bdfb-a7313449b2fe",
+    "store_id": "SYNTHETIC",
+    "product_id": "LONG_HISTORY",
+    "training_date_range": {
+      "start": "2023-01-01",
+      "end": "2024-11-30",
+      "periods": 700
+    },
+    "dataset_sha256": "84fa82a4a925e28387441df675f91c81e18cd98121195fd7a7bb5130dfaf67e6",
+    "seed": 42,
+    "python": "3.12.14",
+    "packages": {
+      "numpy": "2.5.3",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.9.1",
+      "statsmodels": "0.15.0",
+      "lightgbm": "4.7.0",
+      "xgboost": "3.4.1",
+      "torch": "2.14.0+cpu"
+    },
+    "model_name": "nbeats",
+    "features": [],
+    "hyperparameters": {
+      "epochs": 12
+    },
+    "fitted_parameters": {
+      "lookback": 28,
+      "horizon": 14,
+      "epochs": 12,
+      "blocks": 3,
+      "hidden": 64,
+      "seed": 42,
+      "final_training_loss": 0.4285253177989613
+    },
+    "backtest_metrics": {
+      "mae": {
+        "mean": 4.599238622756232,
+        "median": 4.822649002075195,
+        "std": 0.5835589157807828,
+        "best_fold": 1,
+        "worst_fold": 3,
+        "defined_folds": 3
+      },
+      "rmse": {
+        "mean": 5.77637979785209,
+        "median": 6.036976450118642,
+        "std": 0.6485723280450402,
+        "best_fold": 1,
+        "worst_fold": 2,
+        "defined_folds": 3
+      },
+      "wape": {
+        "mean": 0.08632638253315093,
+        "median": 0.09074877154442572,
+        "std": 0.014762902102005713,
+        "best_fold": 1,
+        "worst_fold": 3,
+        "defined_folds": 3
+      },
+      "smape": {
+        "mean": 0.0901041563637061,
+        "median": 0.09562138889640373,
+        "std": 0.016141430941623826,
+        "best_fold": 1,
+        "worst_fold": 3,
+        "defined_folds": 3
+      },
+      "mase": {
+        "mean": 0.564149849329731,
+        "median": 0.5903930690298382,
+        "std": 0.07539423844487801,
+        "best_fold": 1,
+        "worst_fold": 3,
+        "defined_folds": 3
+      }
+    },
+    "tuning_duration_seconds": 1.834998000998894,
+    "production_fit_seconds": 0.16459987499911222,
+    "file": "nbeats.joblib",
+    "sha256": "2dca3e202fcb2fa6311b10c0fc3aa24804a1decfcfbc84f48cca162ee6794542"
+  },
+  "test_metrics": {
+    "mae": 6.549588339669364,
+    "rmse": 8.004083254228615,
+    "wape": 0.11306317725693106,
+    "smape": 0.11879930932981927,
+    "mase": 0.809459498113487
+  },
+  "probabilistic_metrics": {
+    "pinball_p10": 1.5784507206508092,
+    "pinball_p50": 3.274794169834682,
+    "pinball_p90": 1.0702084132603233,
+    "coverage": 0.8571428571428571,
+    "mean_interval_width": 24.578956604003906
+  },
+  "partitions": {
+    "selection": {
+      "start": "2023-01-01",
+      "end": "2024-10-19",
+      "periods": 658
+    },
+    "calibration": {
+      "start": "2024-10-20",
+      "end": "2024-11-16",
+      "periods": 28
+    },
+    "test": {
+      "start": "2024-11-17",
+      "end": "2024-11-30",
+      "periods": 14
+    }
+  },
+  "artifact_reload_verified": true
+}

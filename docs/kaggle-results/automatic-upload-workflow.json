@@ -1,0 +1,20 @@
+{
+  "dataset_id": "ce584990-809f-468f-80fa-727d34d4a0de",
+  "run_id": "12560768-0567-44bd-953c-9dd2a184c5f6",
+  "store_id": "1",
+  "product_id": "1",
+  "champion_model": "lightgbm",
+  "horizon": 90,
+  "test_metrics": {
+    "mae": 4.955696148716489,
+    "rmse": 6.066155639114791,
+    "wape": 0.24398941651229977,
+    "smape": 0.24663683960428456,
+    "mase": 1.0132921761034541
+  },
+  "coverage": 0.7555555555555555,
+  "forecast_total": 1914.7811769048549,
+  "saved_run_restored": true,
+  "artifact_reload_equal": true,
+  "browser_errors": []
+}

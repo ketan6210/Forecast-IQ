@@ -1,0 +1,50 @@
+{
+  "dataset": {
+    "frequency": "D",
+    "column_mapping": {
+      "date": "date",
+      "units_sold": "sales",
+      "store_id": "store",
+      "product_id": "item",
+      "price": "price"
+    },
+    "external_features": [],
+    "row_count": 913000,
+    "processed_row_count": 913000,
+    "date_min": "2013-01-01",
+    "date_max": "2017-12-31",
+    "store_count": 10,
+    "product_count": 50,
+    "category_count": null,
+    "missing_value_summary": {
+      "date": 0,
+      "store_id": 0,
+      "product_id": 0,
+      "units_sold": 0,
+      "price": 913000
+    },
+    "missing_rate": 0.2,
+    "duplicate_count": 0,
+    "duplicate_observation_count": 0,
+    "invalid_date_count": 0,
+    "negative_sales_count": 0,
+    "invalid_price_count": 0,
+    "missing_date_count": 0,
+    "chronologically_ordered": true,
+    "validation_status": "PASS_WITH_WARNINGS",
+    "warnings": [
+      "100.0% of price values are missing."
+    ],
+    "errors": [],
+    "dataset_id": "ce584990-809f-468f-80fa-727d34d4a0de",
+    "filename": "train.csv",
+    "is_demo": false,
+    "created_at": "2026-10-05T05:25:32.142779+00:00",
+    "timings": {
+      "dataset_load_seconds": 2.092797
+    }
+  },
+  "original_file": "/Users/ketan/Downloads/demand-forecasting-kernels-only/train.csv",
+  "used_default_column_settings": true,
+  "browser_errors": []
+}

@@ -1,0 +1,110 @@
+{
+  "dry_run": {
+    "dataset_id": "341d96fe-f077-4e3c-b85a-d807ec0508f6",
+    "dry_run": true,
+    "validated": 500,
+    "imported": 0,
+    "skipped": 0,
+    "seconds": 21.136065385013353
+  },
+  "registered": {
+    "dataset_id": "341d96fe-f077-4e3c-b85a-d807ec0508f6",
+    "dry_run": false,
+    "validated": 500,
+    "imported": 500,
+    "skipped": 0,
+    "seconds": 24.432596052996814
+  },
+  "repeat": {
+    "dataset_id": "341d96fe-f077-4e3c-b85a-d807ec0508f6",
+    "dry_run": false,
+    "validated": 500,
+    "imported": 0,
+    "skipped": 500,
+    "seconds": 20.132340049982304
+  },
+  "dataset_id": "341d96fe-f077-4e3c-b85a-d807ec0508f6",
+  "page_sizes": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    0
+  ],
+  "reloads": [
+    {
+      "run_id": "c9b2c4da-9821-43b4-9df9-5d754becbefd",
+      "champion": "lightgbm",
+      "points_matched": 90
+    },
+    {
+      "run_id": "d5da1f31-6ff6-4aa4-9067-1acea3e66af6",
+      "champion": "lightgbm",
+      "points_matched": 90
+    },
+    {
+      "run_id": "1981d1bf-bbee-4e24-95cc-e6d43c4f9a63",
+      "champion": "lightgbm",
+      "points_matched": 90
+    },
+    {
+      "run_id": "edcdb401-1680-4b7e-a6b1-e94875bdcbe5",
+      "champion": "lightgbm",
+      "points_matched": 90
+    },
+    {
+      "run_id": "1040a83a-5072-4388-af6a-e6ca98a3b412",
+      "champion": "lightgbm",
+      "points_matched": 90
+    }
+  ],
+  "inventory_successful": 500,
+  "inventory_failed": 0,
+  "portfolio": {
+    "series_count": 500,
+    "total_inventory_value": null,
+    "high_risk_series": 500,
+    "below_reorder_point": 0,
+    "expedite_needed": 500,
+    "plans_requiring_recalculation": 0,
+    "total_recommended_order_quantity": 0.0,
+    "average_target_service_level": 0.9499999999999997,
+    "currency": null,
+    "notes": [
+      "Counts refer to SKU/location pairs. Monetary totals require complete costs and one shared currency; no currency conversion is assumed.",
+      "Target service level is a configuration, not measured achieved service.",
+      "Simulated totals require every current plan to have a simulation with matching forecast start, frequency, horizon, simulation and shortage modes; monetary sums also require a shared currency. Service means weight series equally. Portfolio cost percentiles are not inferred from marginal results."
+    ],
+    "abc_distribution": {
+      "unclassified": 500
+    },
+    "simulated_series_count": 0,
+    "expected_holding_cost": null,
+    "expected_stockout_cost": null,
+    "expected_ordering_cost": null,
+    "expected_total_cost": null,
+    "fill_rate": null,
+    "average_service_level": null
+  },
+  "elapsed_seconds": 117.13879192899913,
+  "verification_context": {
+    "environment": "Isolated PostgreSQL 16 Docker stack with current backend source mounted read-only; existing dependency images reused.",
+    "operational_inputs_are_test_assumptions": true,
+    "inventory_inputs": {
+      "on_hand_inventory": 0,
+      "lead_time": 7,
+      "on_order_inventory": 10000,
+      "incoming_orders": [
+        {
+          "period": 20,
+          "quantity": 10000
+        }
+      ]
+    },
+    "batch_duration_seconds": 18.269893549993867,
+    "source_catalog": "storage/kaggle-batch",
+    "source_dataset": "data/imports/kaggle-store-item-sales.csv",
+    "scope": "500 saved forecasts imported and planned; five champion/calibrator reloads; no forecast retraining or 500-series simulation performed."
+  }
+}

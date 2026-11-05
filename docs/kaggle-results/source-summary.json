@@ -1,0 +1,35 @@
+{
+  "source_files": {
+    "train.csv": {
+      "sha256": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed",
+      "bytes": 17333449
+    },
+    "test.csv": {
+      "sha256": "16eb2eec677628c8ed62312a9d6749ebf46f59196dd2fece6fd1e5c147a918fb",
+      "bytes": 975309
+    },
+    "sample_submission.csv": {
+      "sha256": "b797330d1171538cf749abf6a76bef6743783d6eb74f81722465d86cf062ad3f",
+      "bytes": 393899
+    }
+  },
+  "train_rows": 913000,
+  "test_rows": 45000,
+  "series_count": 500,
+  "observations_per_series": {
+    "min": 1826,
+    "max": 1826
+  },
+  "all_series_total_sales": 47704512,
+  "selected_series": {
+    "store": 1,
+    "item": 1,
+    "observations": 1826,
+    "total_sales": 36468,
+    "mean_daily_sales": 19.971522453450163,
+    "minimum_daily_sales": 4,
+    "maximum_daily_sales": 50
+  },
+  "submission_template_unique_sales": 1,
+  "note": "sample_submission.csv is a format template, not ground truth. test.csv contains no sales values."
+}
