@@ -116,7 +116,10 @@ export default function Quality({
         >
           <div className="check-list">
             {[
-              ["Required columns", "All 5 present"],
+              [
+                "Required fields after mapping",
+                d.validation_status === "FAIL" ? "Review errors" : "Validated",
+              ],
               ["Invalid dates", number(d.invalid_date_count)],
               ["Negative sales", number(d.negative_sales_count)],
               ["Nonpositive prices", number(d.invalid_price_count)],
@@ -135,6 +138,10 @@ export default function Quality({
               </div>
             ))}
           </div>
+          <p className="methodology">
+            Date and demand are required. Single-series identifiers can be
+            generated during mapping. Price is optional.
+          </p>
         </Panel>
       </div>
       <Panel

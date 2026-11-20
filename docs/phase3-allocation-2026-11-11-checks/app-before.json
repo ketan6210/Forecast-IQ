@@ -1,0 +1,8 @@
+{
+  "datasets": 192,
+  "forecast_runs": 122,
+  "advanced_runs": 121,
+  "inventory_plans": 48,
+  "inventory_simulations": 61,
+  "migration": "0002_inventory"
+}

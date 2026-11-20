@@ -16,6 +16,7 @@ import {
 import { api, forecastRuns } from "../api";
 import { Loading, Panel, Stat } from "../components";
 import { number, shortDate } from "../format";
+import SharedAllocation from "./SharedAllocation";
 import type { Dataset } from "../types";
 import type {
   InventoryFields,
@@ -1419,6 +1420,7 @@ export default function Inventory({
           ))}
         </details>
       </Panel>
+      <SharedAllocation datasetId={dataset.dataset_id} refresh={refresh} />
       {segmentation && (
         <Panel
           title="ABC / XYZ segmentation"

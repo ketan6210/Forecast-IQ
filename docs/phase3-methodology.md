@@ -86,6 +86,23 @@ shortfall, larger ROP deficit, then larger forecast volume. Saved plans from bef
 receipt checks remain immutable; the UI flags them and their portfolio count for
 recalculation. Their stored risk classifications must not be treated as updated results.
 
+## Shared purchasing budget and capacity
+
+The November 11 allocator combines up to 200 saved recommendations at one location into
+one purchasing decision. It maximizes user-weighted allocated units, bounded by each
+recommendation and existing MOQ/multiple/position limits, subject to a purchase budget,
+available capacity, or both. The budget includes unit purchase costs only. Capacity is
+space reserved for new orders after existing stock and committed receipts; per-unit space
+and a common capacity unit must be supplied. All plans need explicit unit costs and the
+same currency, forecast start, frequency and horizon.
+
+Allocations are saved separately without modifying recommendations or recurring simulation
+policies. Zero orders are valid where shared resources cannot fit MOQ. Solver status and
+feasibility are checked before saving; time-limited feasible results are labeled separately
+from proven optima. See the [full allocation contract and November 11 evidence](phase3-allocation-2026-11-11.md)
+for integer constraints, API/UI usage and limits. Weighted units do not establish profit
+or achieved service. Observed supplier outcomes remain unverified.
+
 ## Forecast uncertainty
 
 The default resamples Phase 2 held-out, chronologically stored signed forecast errors,

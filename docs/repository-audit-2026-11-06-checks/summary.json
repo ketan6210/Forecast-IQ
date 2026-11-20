@@ -1,0 +1,45 @@
+{
+  "source_revision": "07f2aa7",
+  "application_source_modified": false,
+  "python": "3.12.13",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.9.1",
+    "statsmodels": "0.15.0",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "torch": "2.14.0",
+    "fastapi": "0.141.1",
+    "pytest": "9.1.1"
+  },
+  "checks": {
+    "python": {
+      "total": 237,
+      "passed": 237,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 10.367
+    },
+    "existing_browser": {
+      "startTime": "2026-11-06T14:58:10.985Z",
+      "duration": 24540.657,
+      "expected": 19,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "additional_quality_reproduction": {
+      "total": 1,
+      "passed": 1,
+      "purpose": "reproduces existing defect; not a fix validation"
+    },
+    "ruff": "passed",
+    "typescript": "passed",
+    "vite": "passed; 2176 modules transformed",
+    "fresh_docker_build": "passed",
+    "postgresql_migrations": "0001_forecasting then 0002_inventory applied",
+    "audit_stack": "forecastiq-audit-20261106; stopped after verification; volumes retained"
+  },
+  "scope": "Core tests on November 6, 2026; quality browser probe on November 7. No source feature implementation."
+}

@@ -1,0 +1,29 @@
+
+Running 22 tests using 1 worker
+
+(node:16262) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/advanced-races.spec.ts:83:1 › delayed saved run cannot overwrite a newer series selection (585ms)
+  ✓   2 e2e/advanced-races.spec.ts:99:1 › editing controls while saved runs load keeps saved-run choices available (406ms)
+  ✓   3 e2e/advanced-races.spec.ts:122:1 › delayed comparison cannot populate a newly selected series pair (641ms)
+  ✓   4 e2e/advanced.spec.ts:24:1 › advanced training, measured quantiles, SHAP, export, independent series and saved runs (4.0s)
+  ✓   5 e2e/advanced.spec.ts:94:1 › mapped target and time columns support monthly forecasting through the UI (1.6s)
+  ✓   6 e2e/allocation.spec.ts:5:3 › quality checks handle optional price with supplied identifiers (299ms)
+  ✓   7 e2e/allocation.spec.ts:5:3 › quality checks handle optional price with generated identifiers (306ms)
+  ✓   8 e2e/allocation.spec.ts:45:1 › joint budget/capacity allocation persists, exports and restores on mobile (927ms)
+  ✓   9 e2e/completion.spec.ts:3:1 › Kaggle sales upload works with default column settings after changing datasets (783ms)
+  ✓  10 e2e/completion.spec.ts:60:1 › price-free custom predictors reach statistics, randomized training, SHAP and inventory (2.0s)
+  ✓  11 e2e/completion.spec.ts:163:1 › saved simulation restores all controls and what-if horizon recalculates demand (422ms)
+  ✓  12 e2e/inventory.spec.ts:30:1 › late receipts require expediting without duplicating purchase orders (677ms)
+  ✓  13 e2e/inventory.spec.ts:87:1 › inventory forecast selector fetches beyond the first catalog page (537ms)
+  ✓  14 e2e/inventory.spec.ts:120:1 › saved plans without receipt checks request recalculation (546ms)
+  ✓  15 e2e/inventory.spec.ts:148:1 › forecast to replenishment, simulations, policies, what-if and CSV export (1.1s)
+  ✓  16 e2e/inventory.spec.ts:251:1 › batch CSV, risk filter, saved plan and missing costs remain explicit (814ms)
+  ✓  17 e2e/inventory.spec.ts:299:1 › mobile inventory layout and uncovered lead-time validation (651ms)
+  ✓  18 e2e/workflows.spec.ts:16:1 › demo → quality → analytics → measured forecast → model comparison (3.0s)
+  ✓  19 e2e/workflows.spec.ts:94:1 › invalid CSV shows an error and valid upload enables forecasting (1.3s)
+  ✓  20 e2e/workflows.spec.ts:125:1 › mobile layout supports navigation and forecasting without horizontal overflow (1.5s)
+  ✓  21 e2e/workflows.spec.ts:148:1 › explicit zero policy stays visible when returning to a saved forecast (1.3s)
+  ✓  22 e2e/workflows.spec.ts:184:1 › leaving the forecast page discards an in-flight result (942ms)
+
+  22 passed (25.0s)

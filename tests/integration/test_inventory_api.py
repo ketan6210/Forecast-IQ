@@ -259,8 +259,9 @@ def test_migration_adopts_populated_phase2_database_and_is_idempotent(tmp_path):
         "advanced_runs",
         "inventory_plans",
         "inventory_simulations",
+        "inventory_allocations",
     } <= set(inspect(engine).get_table_names())
     with engine.connect() as conn:
         assert conn.scalar(select(Dataset.filename)) == "old.csv"
-        assert conn.scalar(text("SELECT version_num FROM alembic_version")) == "0002_inventory"
+        assert conn.scalar(text("SELECT version_num FROM alembic_version")) == "0003_allocation"
     engine.dispose()

@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
-from backend.app.api import advanced, analytics, datasets, forecast, inventory
+from backend.app.api import advanced, allocation, analytics, datasets, forecast, inventory
 from backend.app.config import settings
 from backend.app.db.migrations import migrate_database
 from backend.app.db.session import build_session_factory
@@ -79,6 +79,7 @@ def create_app(database_url: str | None = None, storage_dir: Path | None = None)
     app.include_router(forecast.router)
     app.include_router(advanced.router)
     app.include_router(inventory.router)
+    app.include_router(allocation.router)
     return app
 
 

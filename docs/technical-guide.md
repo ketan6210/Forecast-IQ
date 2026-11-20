@@ -632,8 +632,11 @@ selector, CSV/batch plans and portfolio KPIs. Supply your own operational invent
 This is a local operator command, not a serialized-model upload API. Only use a catalog
 you generated or otherwise trust: checksum verification does not make arbitrary joblib
 files safe to load. Runtime package compatibility is checked when a saved model is used.
-Multi-SKU plans remain independent; joint budget or shared warehouse-capacity allocation
-is not implemented.
+Saved per-SKU recommendations can now be combined into a joint purchasing decision for
+up to 200 plans at one location. The allocator applies a shared purchasing budget, free
+capacity reserved for new orders, or both, with user-supplied unit priorities and existing
+MOQ/multiple/position limits. It saves a separate immutable allocation without changing
+plans or recurring simulations. See the [November 11 contract and validation](phase3-allocation-2026-11-11.md).
 
 Reproduce the saved walkthrough on the running app:
 

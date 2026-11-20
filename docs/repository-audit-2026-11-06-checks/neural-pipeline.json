@@ -1,0 +1,3451 @@
+{
+  "run_id": "e7b51b5f-c97f-4fc6-9c4a-95c7fc37bbc7",
+  "champion_model": "lightgbm",
+  "frequency": "D",
+  "forecast_horizon": 14,
+  "configuration": {
+    "dataset_id": "966aa627-26d7-4235-a713-33e445f3887d",
+    "store_id": "AUDIT",
+    "product_id": "NEURAL",
+    "horizon": 14,
+    "folds": 3,
+    "window": "expanding",
+    "window_size": 180,
+    "frequency": "auto",
+    "missing_policy": "flag",
+    "models": [
+      "naive",
+      "seasonal_naive",
+      "moving_average",
+      "nbeats",
+      "lightgbm",
+      "xgboost"
+    ],
+    "tune": true,
+    "tuning_trials": 2,
+    "tuning_seed": 42,
+    "neural_epochs": 2
+  },
+  "comparison": [
+    {
+      "model": "naive",
+      "family": "baseline",
+      "status": "ok",
+      "parameters": {},
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-07",
+            "periods": 616
+          },
+          "validation": {
+            "start": "2024-09-08",
+            "end": "2024-09-21",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 17.357142857142858,
+            "rmse": 19.692275497913243,
+            "wape": 0.30798479087452474,
+            "smape": 0.3480869738397006,
+            "mase": 2.1124100719424463
+          },
+          "predictions": [
+            {
+              "date": "2024-09-08",
+              "actual": 51.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-09",
+              "actual": 68.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-10",
+              "actual": 64.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-11",
+              "actual": 64.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-12",
+              "actual": 51.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-13",
+              "actual": 44.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-14",
+              "actual": 58.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-15",
+              "actual": 55.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-16",
+              "actual": 71.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-17",
+              "actual": 64.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-18",
+              "actual": 64.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-19",
+              "actual": 46.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-20",
+              "actual": 41.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-21",
+              "actual": 48.0,
+              "predicted": 39.0
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-21",
+            "periods": 630
+          },
+          "validation": {
+            "start": "2024-09-22",
+            "end": "2024-10-05",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 9.428571428571429,
+            "rmse": 10.776959550024168,
+            "wape": 0.1774193548387097,
+            "smape": 0.18619473239835016,
+            "mase": 1.1542542739241504
+          },
+          "predictions": [
+            {
+              "date": "2024-09-22",
+              "actual": 53.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-23",
+              "actual": 67.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-24",
+              "actual": 60.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-25",
+              "actual": 59.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-26",
+              "actual": 55.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-27",
+              "actual": 38.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-28",
+              "actual": 44.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-29",
+              "actual": 55.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-30",
+              "actual": 64.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-10-01",
+              "actual": 56.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-10-02",
+              "actual": 61.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-10-03",
+              "actual": 48.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-10-04",
+              "actual": 32.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-10-05",
+              "actual": 52.0,
+              "predicted": 48.0
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-10-05",
+            "periods": 644
+          },
+          "validation": {
+            "start": "2024-10-06",
+            "end": "2024-10-19",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 8.642857142857142,
+            "rmse": 9.647353449077553,
+            "wape": 0.16875871687587168,
+            "smape": 0.17205824155308275,
+            "mase": 1.0686141304347825
+          },
+          "predictions": [
+            {
+              "date": "2024-10-06",
+              "actual": 48.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-07",
+              "actual": 64.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-08",
+              "actual": 58.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-09",
+              "actual": 55.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-10",
+              "actual": 43.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-11",
+              "actual": 43.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-12",
+              "actual": 48.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-13",
+              "actual": 45.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-14",
+              "actual": 64.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-15",
+              "actual": 63.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-16",
+              "actual": 57.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-17",
+              "actual": 58.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-18",
+              "actual": 35.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-19",
+              "actual": 36.0,
+              "predicted": 52.0
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "mae": {
+          "mean": 11.80952380952381,
+          "median": 9.428571428571429,
+          "std": 4.8204143554079595,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 13.372196165671653,
+          "median": 10.776959550024168,
+          "std": 5.502413521373545,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.21805428752970202,
+          "median": 0.1774193548387097,
+          "std": 0.07800239250414512,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.23544664926371114,
+          "median": 0.18619473239835016,
+          "std": 0.09780512324920801,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 1.4450928254337931,
+          "median": 1.1542542739241504,
+          "std": 0.5794978767520533,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "duration_seconds": 0.000843374989926815,
+      "forecast_stability": 0.0,
+      "notes": [],
+      "rank": 6,
+      "trials": [
+        {
+          "parameters": {},
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 11.80952380952381,
+              "median": 9.428571428571429,
+              "std": 4.8204143554079595,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 13.372196165671653,
+              "median": 10.776959550024168,
+              "std": 5.502413521373545,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.21805428752970202,
+              "median": 0.1774193548387097,
+              "std": 0.07800239250414512,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.23544664926371114,
+              "median": 0.18619473239835016,
+              "std": 0.09780512324920801,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 1.4450928254337931,
+              "median": 1.1542542739241504,
+              "std": 0.5794978767520533,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 0.000843374989926815
+        }
+      ],
+      "tuning_duration_seconds": 0.000843374989926815,
+      "search_method": "single_configuration",
+      "tuning_seed": 42
+    },
+    {
+      "model": "seasonal_naive",
+      "family": "baseline",
+      "status": "ok",
+      "parameters": {},
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-07",
+            "periods": 616
+          },
+          "validation": {
+            "start": "2024-09-08",
+            "end": "2024-09-21",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 7.928571428571429,
+            "rmse": 9.81616742202082,
+            "wape": 0.14068441064638784,
+            "smape": 0.15021374366510648,
+            "mase": 0.9649280575539569
+          },
+          "predictions": [
+            {
+              "date": "2024-09-08",
+              "actual": 51.0,
+              "predicted": 57.0
+            },
+            {
+              "date": "2024-09-09",
+              "actual": 68.0,
+              "predicted": 71.0
+            },
+            {
+              "date": "2024-09-10",
+              "actual": 64.0,
+              "predicted": 61.0
+            },
+            {
+              "date": "2024-09-11",
+              "actual": 64.0,
+              "predicted": 57.0
+            },
+            {
+              "date": "2024-09-12",
+              "actual": 51.0,
+              "predicted": 65.0
+            },
+            {
+              "date": "2024-09-13",
+              "actual": 44.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-09-14",
+              "actual": 58.0,
+              "predicted": 39.0
+            },
+            {
+              "date": "2024-09-15",
+              "actual": 55.0,
+              "predicted": 57.0
+            },
+            {
+              "date": "2024-09-16",
+              "actual": 71.0,
+              "predicted": 71.0
+            },
+            {
+              "date": "2024-09-17",
+              "actual": 64.0,
+              "predicted": 61.0
+            },
+            {
+              "date": "2024-09-18",
+              "actual": 64.0,
+              "predicted": 57.0
+            },
+            {
+              "date": "2024-09-19",
+              "actual": 46.0,
+              "predicted": 65.0
+            },
+            {
+              "date": "2024-09-20",
+              "actual": 41.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-09-21",
+              "actual": 48.0,
+              "predicted": 39.0
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-21",
+            "periods": 630
+          },
+          "validation": {
+            "start": "2024-09-22",
+            "end": "2024-10-05",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 4.571428571428571,
+            "rmse": 5.277986629117476,
+            "wape": 0.08602150537634409,
+            "smape": 0.08829387679801767,
+            "mase": 0.5596384358420122
+          },
+          "predictions": [
+            {
+              "date": "2024-09-22",
+              "actual": 53.0,
+              "predicted": 55.0
+            },
+            {
+              "date": "2024-09-23",
+              "actual": 67.0,
+              "predicted": 71.0
+            },
+            {
+              "date": "2024-09-24",
+              "actual": 60.0,
+              "predicted": 64.0
+            },
+            {
+              "date": "2024-09-25",
+              "actual": 59.0,
+              "predicted": 64.0
+            },
+            {
+              "date": "2024-09-26",
+              "actual": 55.0,
+              "predicted": 46.0
+            },
+            {
+              "date": "2024-09-27",
+              "actual": 38.0,
+              "predicted": 41.0
+            },
+            {
+              "date": "2024-09-28",
+              "actual": 44.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-09-29",
+              "actual": 55.0,
+              "predicted": 55.0
+            },
+            {
+              "date": "2024-09-30",
+              "actual": 64.0,
+              "predicted": 71.0
+            },
+            {
+              "date": "2024-10-01",
+              "actual": 56.0,
+              "predicted": 64.0
+            },
+            {
+              "date": "2024-10-02",
+              "actual": 61.0,
+              "predicted": 64.0
+            },
+            {
+              "date": "2024-10-03",
+              "actual": 48.0,
+              "predicted": 46.0
+            },
+            {
+              "date": "2024-10-04",
+              "actual": 32.0,
+              "predicted": 41.0
+            },
+            {
+              "date": "2024-10-05",
+              "actual": 52.0,
+              "predicted": 48.0
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-10-05",
+            "periods": 644
+          },
+          "validation": {
+            "start": "2024-10-06",
+            "end": "2024-10-19",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 6.071428571428571,
+            "rmse": 7.468983484097035,
+            "wape": 0.11854951185495119,
+            "smape": 0.12749952037137277,
+            "mase": 0.7506793478260869
+          },
+          "predictions": [
+            {
+              "date": "2024-10-06",
+              "actual": 48.0,
+              "predicted": 55.0
+            },
+            {
+              "date": "2024-10-07",
+              "actual": 64.0,
+              "predicted": 64.0
+            },
+            {
+              "date": "2024-10-08",
+              "actual": 58.0,
+              "predicted": 56.0
+            },
+            {
+              "date": "2024-10-09",
+              "actual": 55.0,
+              "predicted": 61.0
+            },
+            {
+              "date": "2024-10-10",
+              "actual": 43.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-10-11",
+              "actual": 43.0,
+              "predicted": 32.0
+            },
+            {
+              "date": "2024-10-12",
+              "actual": 48.0,
+              "predicted": 52.0
+            },
+            {
+              "date": "2024-10-13",
+              "actual": 45.0,
+              "predicted": 55.0
+            },
+            {
+              "date": "2024-10-14",
+              "actual": 64.0,
+              "predicted": 64.0
+            },
+            {
+              "date": "2024-10-15",
+              "actual": 63.0,
+              "predicted": 56.0
+            },
+            {
+              "date": "2024-10-16",
+              "actual": 57.0,
+              "predicted": 61.0
+            },
+            {
+              "date": "2024-10-17",
+              "actual": 58.0,
+              "predicted": 48.0
+            },
+            {
+              "date": "2024-10-18",
+              "actual": 35.0,
+              "predicted": 32.0
+            },
+            {
+              "date": "2024-10-19",
+              "actual": 36.0,
+              "predicted": 52.0
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "mae": {
+          "mean": 6.19047619047619,
+          "median": 6.071428571428571,
+          "std": 1.6817346082295528,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 7.521045845078444,
+          "median": 7.468983484097035,
+          "std": 2.269538299818363,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.11508514262589438,
+          "median": 0.11854951185495119,
+          "std": 0.027495630448434366,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.12200238027816564,
+          "median": 0.12749952037137277,
+          "std": 0.0313238150631873,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.758415280407352,
+          "median": 0.7506793478260869,
+          "std": 0.20275552484834838,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "duration_seconds": 0.0007027910032775253,
+      "forecast_stability": 0.2069340067501038,
+      "notes": [],
+      "rank": 3,
+      "trials": [
+        {
+          "parameters": {},
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 6.19047619047619,
+              "median": 6.071428571428571,
+              "std": 1.6817346082295528,
+              "best_fold": 2,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 7.521045845078444,
+              "median": 7.468983484097035,
+              "std": 2.269538299818363,
+              "best_fold": 2,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.11508514262589438,
+              "median": 0.11854951185495119,
+              "std": 0.027495630448434366,
+              "best_fold": 2,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.12200238027816564,
+              "median": 0.12749952037137277,
+              "std": 0.0313238150631873,
+              "best_fold": 2,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 0.758415280407352,
+              "median": 0.7506793478260869,
+              "std": 0.20275552484834838,
+              "best_fold": 2,
+              "worst_fold": 1,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 0.0007027910032775253
+        }
+      ],
+      "tuning_duration_seconds": 0.0007027910032775253,
+      "search_method": "single_configuration",
+      "tuning_seed": 42
+    },
+    {
+      "model": "moving_average",
+      "family": "baseline",
+      "status": "ok",
+      "parameters": {},
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-07",
+            "periods": 616
+          },
+          "validation": {
+            "start": "2024-09-08",
+            "end": "2024-09-21",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 8.357142857142858,
+            "rmse": 9.362866297567345,
+            "wape": 0.1482889733840304,
+            "smape": 0.1501122380307867,
+            "mase": 1.017086330935252
+          },
+          "predictions": [
+            {
+              "date": "2024-09-08",
+              "actual": 51.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-09",
+              "actual": 68.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-10",
+              "actual": 64.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-11",
+              "actual": 64.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-12",
+              "actual": 51.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-13",
+              "actual": 44.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-14",
+              "actual": 58.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-15",
+              "actual": 55.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-16",
+              "actual": 71.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-17",
+              "actual": 64.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-18",
+              "actual": 64.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-19",
+              "actual": 46.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-20",
+              "actual": 41.0,
+              "predicted": 57.42857142857143
+            },
+            {
+              "date": "2024-09-21",
+              "actual": 48.0,
+              "predicted": 57.42857142857143
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-21",
+            "periods": 630
+          },
+          "validation": {
+            "start": "2024-09-22",
+            "end": "2024-10-05",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 7.224489795918367,
+            "rmse": 9.777107789867813,
+            "wape": 0.1359447004608295,
+            "smape": 0.1422678036282853,
+            "mase": 0.8844285995003228
+          },
+          "predictions": [
+            {
+              "date": "2024-09-22",
+              "actual": 53.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-23",
+              "actual": 67.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-24",
+              "actual": 60.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-25",
+              "actual": 59.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-26",
+              "actual": 55.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-27",
+              "actual": 38.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-28",
+              "actual": 44.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-29",
+              "actual": 55.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-09-30",
+              "actual": 64.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-10-01",
+              "actual": 56.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-10-02",
+              "actual": 61.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-10-03",
+              "actual": 48.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-10-04",
+              "actual": 32.0,
+              "predicted": 55.57142857142857
+            },
+            {
+              "date": "2024-10-05",
+              "actual": 52.0,
+              "predicted": 55.57142857142857
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-10-05",
+            "periods": 644
+          },
+          "validation": {
+            "start": "2024-10-06",
+            "end": "2024-10-19",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 8.642857142857142,
+            "rmse": 9.710608547735148,
+            "wape": 0.16875871687587168,
+            "smape": 0.17200775011891653,
+            "mase": 1.0686141304347825
+          },
+          "predictions": [
+            {
+              "date": "2024-10-06",
+              "actual": 48.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-07",
+              "actual": 64.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-08",
+              "actual": 58.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-09",
+              "actual": 55.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-10",
+              "actual": 43.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-11",
+              "actual": 43.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-12",
+              "actual": 48.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-13",
+              "actual": 45.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-14",
+              "actual": 64.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-15",
+              "actual": 63.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-16",
+              "actual": 57.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-17",
+              "actual": 58.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-18",
+              "actual": 35.0,
+              "predicted": 52.57142857142857
+            },
+            {
+              "date": "2024-10-19",
+              "actual": 36.0,
+              "predicted": 52.57142857142857
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "mae": {
+          "mean": 8.074829931972788,
+          "median": 8.357142857142858,
+          "std": 0.7501446017296237,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 9.616860878390101,
+          "median": 9.710608547735148,
+          "std": 0.22246454238046717,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.15099746357357718,
+          "median": 0.1482889733840304,
+          "std": 0.016573830506307768,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.15479593059266283,
+          "median": 0.1501122380307867,
+          "std": 0.015413268190978595,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.9900430202901193,
+          "median": 1.017086330935252,
+          "std": 0.09502411767224712,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        }
+      },
+      "duration_seconds": 0.0007088749844115227,
+      "forecast_stability": 0.0,
+      "notes": [],
+      "rank": 5,
+      "trials": [
+        {
+          "parameters": {},
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 8.074829931972788,
+              "median": 8.357142857142858,
+              "std": 0.7501446017296237,
+              "best_fold": 2,
+              "worst_fold": 3,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 9.616860878390101,
+              "median": 9.710608547735148,
+              "std": 0.22246454238046717,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.15099746357357718,
+              "median": 0.1482889733840304,
+              "std": 0.016573830506307768,
+              "best_fold": 2,
+              "worst_fold": 3,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.15479593059266283,
+              "median": 0.1501122380307867,
+              "std": 0.015413268190978595,
+              "best_fold": 2,
+              "worst_fold": 3,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 0.9900430202901193,
+              "median": 1.017086330935252,
+              "std": 0.09502411767224712,
+              "best_fold": 2,
+              "worst_fold": 3,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 0.0007088749844115227
+        }
+      ],
+      "tuning_duration_seconds": 0.0007088749844115227,
+      "search_method": "single_configuration",
+      "tuning_seed": 42
+    },
+    {
+      "model": "nbeats",
+      "family": "neural",
+      "status": "ok",
+      "parameters": {
+        "epochs": 2
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-07",
+            "periods": 616
+          },
+          "validation": {
+            "start": "2024-09-08",
+            "end": "2024-09-21",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 8.024014336722237,
+            "rmse": 9.404282962416389,
+            "wape": 0.1423779476731449,
+            "smape": 0.14519058514352684,
+            "mase": 0.9765437112437735
+          },
+          "predictions": [
+            {
+              "date": "2024-09-08",
+              "actual": 51.0,
+              "predicted": 47.55751037597656
+            },
+            {
+              "date": "2024-09-09",
+              "actual": 68.0,
+              "predicted": 51.31215286254883
+            },
+            {
+              "date": "2024-09-10",
+              "actual": 64.0,
+              "predicted": 55.11909103393555
+            },
+            {
+              "date": "2024-09-11",
+              "actual": 64.0,
+              "predicted": 55.107967376708984
+            },
+            {
+              "date": "2024-09-12",
+              "actual": 51.0,
+              "predicted": 49.429752349853516
+            },
+            {
+              "date": "2024-09-13",
+              "actual": 44.0,
+              "predicted": 46.28618240356445
+            },
+            {
+              "date": "2024-09-14",
+              "actual": 58.0,
+              "predicted": 44.16564178466797
+            },
+            {
+              "date": "2024-09-15",
+              "actual": 55.0,
+              "predicted": 47.38486862182617
+            },
+            {
+              "date": "2024-09-16",
+              "actual": 71.0,
+              "predicted": 53.225685119628906
+            },
+            {
+              "date": "2024-09-17",
+              "actual": 64.0,
+              "predicted": 56.250587463378906
+            },
+            {
+              "date": "2024-09-18",
+              "actual": 64.0,
+              "predicted": 54.483707427978516
+            },
+            {
+              "date": "2024-09-19",
+              "actual": 46.0,
+              "predicted": 50.994693756103516
+            },
+            {
+              "date": "2024-09-20",
+              "actual": 41.0,
+              "predicted": 45.53109359741211
+            },
+            {
+              "date": "2024-09-21",
+              "actual": 48.0,
+              "predicted": 43.438804626464844
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-21",
+            "periods": 630
+          },
+          "validation": {
+            "start": "2024-09-22",
+            "end": "2024-10-05",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 6.108002798897879,
+            "rmse": 7.1812182773410935,
+            "wape": 0.11493553653840095,
+            "smape": 0.1220390457893901,
+            "mase": 0.7477472477330279
+          },
+          "predictions": [
+            {
+              "date": "2024-09-22",
+              "actual": 53.0,
+              "predicted": 47.94639205932617
+            },
+            {
+              "date": "2024-09-23",
+              "actual": 67.0,
+              "predicted": 53.556697845458984
+            },
+            {
+              "date": "2024-09-24",
+              "actual": 60.0,
+              "predicted": 56.89752197265625
+            },
+            {
+              "date": "2024-09-25",
+              "actual": 59.0,
+              "predicted": 57.00798416137695
+            },
+            {
+              "date": "2024-09-26",
+              "actual": 55.0,
+              "predicted": 50.108184814453125
+            },
+            {
+              "date": "2024-09-27",
+              "actual": 38.0,
+              "predicted": 46.29469299316406
+            },
+            {
+              "date": "2024-09-28",
+              "actual": 44.0,
+              "predicted": 44.84528350830078
+            },
+            {
+              "date": "2024-09-29",
+              "actual": 55.0,
+              "predicted": 47.69269943237305
+            },
+            {
+              "date": "2024-09-30",
+              "actual": 64.0,
+              "predicted": 55.17860412597656
+            },
+            {
+              "date": "2024-10-01",
+              "actual": 56.0,
+              "predicted": 57.99433898925781
+            },
+            {
+              "date": "2024-10-02",
+              "actual": 61.0,
+              "predicted": 54.94620895385742
+            },
+            {
+              "date": "2024-10-03",
+              "actual": 48.0,
+              "predicted": 50.793548583984375
+            },
+            {
+              "date": "2024-10-04",
+              "actual": 32.0,
+              "predicted": 44.72229766845703
+            },
+            {
+              "date": "2024-10-05",
+              "actual": 52.0,
+              "predicted": 43.803829193115234
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-10-05",
+            "periods": 644
+          },
+          "validation": {
+            "start": "2024-10-06",
+            "end": "2024-10-19",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 5.3357197897774835,
+            "rmse": 6.2289532977668305,
+            "wape": 0.10418420788965797,
+            "smape": 0.10778580904355639,
+            "mase": 0.6597153544425965
+          },
+          "predictions": [
+            {
+              "date": "2024-10-06",
+              "actual": 48.0,
+              "predicted": 49.48783493041992
+            },
+            {
+              "date": "2024-10-07",
+              "actual": 64.0,
+              "predicted": 53.369808197021484
+            },
+            {
+              "date": "2024-10-08",
+              "actual": 58.0,
+              "predicted": 55.862388610839844
+            },
+            {
+              "date": "2024-10-09",
+              "actual": 55.0,
+              "predicted": 55.01309585571289
+            },
+            {
+              "date": "2024-10-10",
+              "actual": 43.0,
+              "predicted": 49.11293411254883
+            },
+            {
+              "date": "2024-10-11",
+              "actual": 43.0,
+              "predicted": 46.76498794555664
+            },
+            {
+              "date": "2024-10-12",
+              "actual": 48.0,
+              "predicted": 45.238075256347656
+            },
+            {
+              "date": "2024-10-13",
+              "actual": 45.0,
+              "predicted": 49.113800048828125
+            },
+            {
+              "date": "2024-10-14",
+              "actual": 64.0,
+              "predicted": 55.05382537841797
+            },
+            {
+              "date": "2024-10-15",
+              "actual": 63.0,
+              "predicted": 56.62883758544922
+            },
+            {
+              "date": "2024-10-16",
+              "actual": 57.0,
+              "predicted": 53.98185348510742
+            },
+            {
+              "date": "2024-10-17",
+              "actual": 58.0,
+              "predicted": 50.62051010131836
+            },
+            {
+              "date": "2024-10-18",
+              "actual": 35.0,
+              "predicted": 44.929420471191406
+            },
+            {
+              "date": "2024-10-19",
+              "actual": 36.0,
+              "predicted": 44.033302307128906
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "mae": {
+          "mean": 6.489245641799201,
+          "median": 6.108002798897879,
+          "std": 1.384103129008397,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 7.604818179174771,
+          "median": 7.1812182773410935,
+          "std": 1.6294960194569346,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.12049923070040129,
+          "median": 0.11493553653840095,
+          "std": 0.019695341053365525,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.12500514665882445,
+          "median": 0.1220390457893901,
+          "std": 0.018877966907163878,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.7946687711397993,
+          "median": 0.7477472477330279,
+          "std": 0.16354288103565565,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "duration_seconds": 1.1935289159882814,
+      "forecast_stability": 0.06878497190011264,
+      "notes": [],
+      "rank": 4,
+      "trials": [
+        {
+          "parameters": {
+            "epochs": 2
+          },
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 6.489245641799201,
+              "median": 6.108002798897879,
+              "std": 1.384103129008397,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 7.604818179174771,
+              "median": 7.1812182773410935,
+              "std": 1.6294960194569346,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.12049923070040129,
+              "median": 0.11493553653840095,
+              "std": 0.019695341053365525,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.12500514665882445,
+              "median": 0.1220390457893901,
+              "std": 0.018877966907163878,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 0.7946687711397993,
+              "median": 0.7477472477330279,
+              "std": 0.16354288103565565,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 1.1935289159882814
+        }
+      ],
+      "tuning_duration_seconds": 1.1935289159882814,
+      "search_method": "single_configuration",
+      "tuning_seed": 42
+    },
+    {
+      "model": "lightgbm",
+      "family": "machine_learning",
+      "status": "ok",
+      "parameters": {
+        "reg_lambda": 1.0,
+        "num_leaves": 7,
+        "n_estimators": 80,
+        "min_child_samples": 15,
+        "max_depth": 5,
+        "learning_rate": 0.03
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-07",
+            "periods": 616
+          },
+          "validation": {
+            "start": "2024-09-08",
+            "end": "2024-09-21",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 4.344877755437713,
+            "rmse": 5.402791614687587,
+            "wape": 0.07709542278343216,
+            "smape": 0.07992619759014975,
+            "mase": 0.5287830841449974
+          },
+          "predictions": [
+            {
+              "date": "2024-09-08",
+              "actual": 51.0,
+              "predicted": 51.59516549012455
+            },
+            {
+              "date": "2024-09-09",
+              "actual": 68.0,
+              "predicted": 62.20463265988014
+            },
+            {
+              "date": "2024-09-10",
+              "actual": 64.0,
+              "predicted": 65.70842384480267
+            },
+            {
+              "date": "2024-09-11",
+              "actual": 64.0,
+              "predicted": 59.59903342536824
+            },
+            {
+              "date": "2024-09-12",
+              "actual": 51.0,
+              "predicted": 48.34919768988732
+            },
+            {
+              "date": "2024-09-13",
+              "actual": 44.0,
+              "predicted": 44.68557989612528
+            },
+            {
+              "date": "2024-09-14",
+              "actual": 58.0,
+              "predicted": 43.86167214354696
+            },
+            {
+              "date": "2024-09-15",
+              "actual": 55.0,
+              "predicted": 50.072573724263336
+            },
+            {
+              "date": "2024-09-16",
+              "actual": 71.0,
+              "predicted": 64.86294093278094
+            },
+            {
+              "date": "2024-09-17",
+              "actual": 64.0,
+              "predicted": 60.948113688660946
+            },
+            {
+              "date": "2024-09-18",
+              "actual": 64.0,
+              "predicted": 59.62495644134894
+            },
+            {
+              "date": "2024-09-19",
+              "actual": 46.0,
+              "predicted": 50.53193859830728
+            },
+            {
+              "date": "2024-09-20",
+              "actual": 41.0,
+              "predicted": 43.601363676866924
+            },
+            {
+              "date": "2024-09-21",
+              "actual": 48.0,
+              "predicted": 42.77106222436189
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-21",
+            "periods": 630
+          },
+          "validation": {
+            "start": "2024-09-22",
+            "end": "2024-10-05",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 4.084073961205268,
+            "rmse": 5.266011992820816,
+            "wape": 0.07685085410870128,
+            "smape": 0.08485679264889613,
+            "mase": 0.4999760420182516
+          },
+          "predictions": [
+            {
+              "date": "2024-09-22",
+              "actual": 53.0,
+              "predicted": 50.43723470758149
+            },
+            {
+              "date": "2024-09-23",
+              "actual": 67.0,
+              "predicted": 66.11849025068341
+            },
+            {
+              "date": "2024-09-24",
+              "actual": 60.0,
+              "predicted": 63.479711849987005
+            },
+            {
+              "date": "2024-09-25",
+              "actual": 59.0,
+              "predicted": 60.17638177224252
+            },
+            {
+              "date": "2024-09-26",
+              "actual": 55.0,
+              "predicted": 48.636046006936645
+            },
+            {
+              "date": "2024-09-27",
+              "actual": 38.0,
+              "predicted": 44.56648438635265
+            },
+            {
+              "date": "2024-09-28",
+              "actual": 44.0,
+              "predicted": 44.594579466643296
+            },
+            {
+              "date": "2024-09-29",
+              "actual": 55.0,
+              "predicted": 51.18396996973236
+            },
+            {
+              "date": "2024-09-30",
+              "actual": 64.0,
+              "predicted": 64.67331302029662
+            },
+            {
+              "date": "2024-10-01",
+              "actual": 56.0,
+              "predicted": 63.24936356912401
+            },
+            {
+              "date": "2024-10-02",
+              "actual": 61.0,
+              "predicted": 57.93075703164628
+            },
+            {
+              "date": "2024-10-03",
+              "actual": 48.0,
+              "predicted": 48.64400449208011
+            },
+            {
+              "date": "2024-10-04",
+              "actual": 32.0,
+              "predicted": 43.46768683103152
+            },
+            {
+              "date": "2024-10-05",
+              "actual": 52.0,
+              "predicted": 43.36799196430379
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-10-05",
+            "periods": 644
+          },
+          "validation": {
+            "start": "2024-10-06",
+            "end": "2024-10-19",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 4.061259015172862,
+            "rmse": 5.040244261049648,
+            "wape": 0.07929933920839619,
+            "smape": 0.0853051142960481,
+            "mase": 0.5021393619303403
+          },
+          "predictions": [
+            {
+              "date": "2024-10-06",
+              "actual": 48.0,
+              "predicted": 50.67512638050619
+            },
+            {
+              "date": "2024-10-07",
+              "actual": 64.0,
+              "predicted": 64.17480530767297
+            },
+            {
+              "date": "2024-10-08",
+              "actual": 58.0,
+              "predicted": 61.64653398921069
+            },
+            {
+              "date": "2024-10-09",
+              "actual": 55.0,
+              "predicted": 59.238591760404404
+            },
+            {
+              "date": "2024-10-10",
+              "actual": 43.0,
+              "predicted": 48.69072059718321
+            },
+            {
+              "date": "2024-10-11",
+              "actual": 43.0,
+              "predicted": 43.61669475179433
+            },
+            {
+              "date": "2024-10-12",
+              "actual": 48.0,
+              "predicted": 44.553674069011265
+            },
+            {
+              "date": "2024-10-13",
+              "actual": 45.0,
+              "predicted": 50.356023000993396
+            },
+            {
+              "date": "2024-10-14",
+              "actual": 64.0,
+              "predicted": 62.40001328530228
+            },
+            {
+              "date": "2024-10-15",
+              "actual": 63.0,
+              "predicted": 62.127101594621664
+            },
+            {
+              "date": "2024-10-16",
+              "actual": 57.0,
+              "predicted": 59.27775453697916
+            },
+            {
+              "date": "2024-10-17",
+              "actual": 58.0,
+              "predicted": 47.34888241448155
+            },
+            {
+              "date": "2024-10-18",
+              "actual": 35.0,
+              "predicted": 42.99207886820066
+            },
+            {
+              "date": "2024-10-19",
+              "actual": 36.0,
+              "predicted": 43.61896838289182
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "mae": {
+          "mean": 4.163403577271947,
+          "median": 4.084073961205268,
+          "std": 0.15757470750828095,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 5.2363492895193495,
+          "median": 5.266011992820816,
+          "std": 0.18308482428325734,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.07774853870017655,
+          "median": 0.07709542278343216,
+          "std": 0.001348588195627424,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.083362701511698,
+          "median": 0.08485679264889613,
+          "std": 0.002984529691080088,
+          "best_fold": 1,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.5102994960311964,
+          "median": 0.5021393619303403,
+          "std": 0.016043760794495602,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "duration_seconds": 0.15730991700547747,
+      "forecast_stability": 0.11928836627242541,
+      "notes": [],
+      "rank": 1,
+      "trials": [
+        {
+          "parameters": {
+            "reg_lambda": 1.0,
+            "num_leaves": 7,
+            "n_estimators": 80,
+            "min_child_samples": 15,
+            "max_depth": 5,
+            "learning_rate": 0.03
+          },
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 4.163403577271947,
+              "median": 4.084073961205268,
+              "std": 0.15757470750828095,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 5.2363492895193495,
+              "median": 5.266011992820816,
+              "std": 0.18308482428325734,
+              "best_fold": 3,
+              "worst_fold": 1,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.07774853870017655,
+              "median": 0.07709542278343216,
+              "std": 0.001348588195627424,
+              "best_fold": 2,
+              "worst_fold": 3,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.083362701511698,
+              "median": 0.08485679264889613,
+              "std": 0.002984529691080088,
+              "best_fold": 1,
+              "worst_fold": 3,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 0.5102994960311964,
+              "median": 0.5021393619303403,
+              "std": 0.016043760794495602,
+              "best_fold": 2,
+              "worst_fold": 1,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 0.15730991700547747
+        },
+        {
+          "parameters": {
+            "reg_lambda": 1.0,
+            "num_leaves": 15,
+            "n_estimators": 60,
+            "min_child_samples": 10,
+            "max_depth": 4,
+            "learning_rate": 0.1
+          },
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 4.579792885743406,
+              "median": 4.657922475985204,
+              "std": 0.39406753872329126,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 5.6091664799173016,
+              "median": 5.4878741926934325,
+              "std": 0.2648003560848852,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.08579356973334014,
+              "median": 0.09094967177655909,
+              "std": 0.010527346825536474,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.09001212387694653,
+              "median": 0.09469599910405054,
+              "std": 0.010478593607654794,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 0.5615630318272857,
+              "median": 0.5759116104818663,
+              "std": 0.05056752664812439,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 0.14897595799993724
+        }
+      ],
+      "tuning_duration_seconds": 0.3062858750054147,
+      "search_method": "seeded_randomized_chronological",
+      "tuning_seed": 42
+    },
+    {
+      "model": "xgboost",
+      "family": "machine_learning",
+      "status": "ok",
+      "parameters": {
+        "reg_lambda": 1.0,
+        "n_estimators": 120,
+        "min_child_weight": 10,
+        "max_depth": 4,
+        "learning_rate": 0.03
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-07",
+            "periods": 616
+          },
+          "validation": {
+            "start": "2024-09-08",
+            "end": "2024-09-21",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 4.1011665889195035,
+            "rmse": 5.424140676645192,
+            "wape": 0.07277101678691134,
+            "smape": 0.07616282310041757,
+            "mase": 0.4991227922965583
+          },
+          "predictions": [
+            {
+              "date": "2024-09-08",
+              "actual": 51.0,
+              "predicted": 51.16318893432617
+            },
+            {
+              "date": "2024-09-09",
+              "actual": 68.0,
+              "predicted": 62.509910583496094
+            },
+            {
+              "date": "2024-09-10",
+              "actual": 64.0,
+              "predicted": 67.68303680419922
+            },
+            {
+              "date": "2024-09-11",
+              "actual": 64.0,
+              "predicted": 58.52029800415039
+            },
+            {
+              "date": "2024-09-12",
+              "actual": 51.0,
+              "predicted": 48.27385330200195
+            },
+            {
+              "date": "2024-09-13",
+              "actual": 44.0,
+              "predicted": 44.232601165771484
+            },
+            {
+              "date": "2024-09-14",
+              "actual": 58.0,
+              "predicted": 43.48277282714844
+            },
+            {
+              "date": "2024-09-15",
+              "actual": 55.0,
+              "predicted": 53.74452209472656
+            },
+            {
+              "date": "2024-09-16",
+              "actual": 71.0,
+              "predicted": 67.58765411376953
+            },
+            {
+              "date": "2024-09-17",
+              "actual": 64.0,
+              "predicted": 64.31027221679688
+            },
+            {
+              "date": "2024-09-18",
+              "actual": 64.0,
+              "predicted": 59.478450775146484
+            },
+            {
+              "date": "2024-09-19",
+              "actual": 46.0,
+              "predicted": 52.78319549560547
+            },
+            {
+              "date": "2024-09-20",
+              "actual": 41.0,
+              "predicted": 44.69826889038086
+            },
+            {
+              "date": "2024-09-21",
+              "actual": 48.0,
+              "predicted": 42.85676956176758
+            }
+          ]
+        },
+        {
+          "fold": 2,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-09-21",
+            "periods": 630
+          },
+          "validation": {
+            "start": "2024-09-22",
+            "end": "2024-10-05",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 4.434715270996094,
+            "rmse": 5.505197046838323,
+            "wape": 0.08344894327143187,
+            "smape": 0.08853183330272334,
+            "mase": 0.5429018694892055
+          },
+          "predictions": [
+            {
+              "date": "2024-09-22",
+              "actual": 53.0,
+              "predicted": 52.81216812133789
+            },
+            {
+              "date": "2024-09-23",
+              "actual": 67.0,
+              "predicted": 70.35352325439453
+            },
+            {
+              "date": "2024-09-24",
+              "actual": 60.0,
+              "predicted": 63.38904571533203
+            },
+            {
+              "date": "2024-09-25",
+              "actual": 59.0,
+              "predicted": 59.845340728759766
+            },
+            {
+              "date": "2024-09-26",
+              "actual": 55.0,
+              "predicted": 49.41726303100586
+            },
+            {
+              "date": "2024-09-27",
+              "actual": 38.0,
+              "predicted": 43.481178283691406
+            },
+            {
+              "date": "2024-09-28",
+              "actual": 44.0,
+              "predicted": 44.27509307861328
+            },
+            {
+              "date": "2024-09-29",
+              "actual": 55.0,
+              "predicted": 53.19286346435547
+            },
+            {
+              "date": "2024-09-30",
+              "actual": 64.0,
+              "predicted": 69.40354919433594
+            },
+            {
+              "date": "2024-10-01",
+              "actual": 56.0,
+              "predicted": 63.02757263183594
+            },
+            {
+              "date": "2024-10-02",
+              "actual": 61.0,
+              "predicted": 53.57991409301758
+            },
+            {
+              "date": "2024-10-03",
+              "actual": 48.0,
+              "predicted": 49.865055084228516
+            },
+            {
+              "date": "2024-10-04",
+              "actual": 32.0,
+              "predicted": 43.964073181152344
+            },
+            {
+              "date": "2024-10-05",
+              "actual": 52.0,
+              "predicted": 44.51620864868164
+            }
+          ]
+        },
+        {
+          "fold": 3,
+          "train": {
+            "start": "2023-01-01",
+            "end": "2024-10-05",
+            "periods": 644
+          },
+          "validation": {
+            "start": "2024-10-06",
+            "end": "2024-10-19",
+            "periods": 14
+          },
+          "metrics": {
+            "mae": 4.317064557756696,
+            "rmse": 5.42465950290124,
+            "wape": 0.08429414757126046,
+            "smape": 0.0904230570989156,
+            "mase": 0.533767492874809
+          },
+          "predictions": [
+            {
+              "date": "2024-10-06",
+              "actual": 48.0,
+              "predicted": 52.813453674316406
+            },
+            {
+              "date": "2024-10-07",
+              "actual": 64.0,
+              "predicted": 66.68618774414062
+            },
+            {
+              "date": "2024-10-08",
+              "actual": 58.0,
+              "predicted": 58.869415283203125
+            },
+            {
+              "date": "2024-10-09",
+              "actual": 55.0,
+              "predicted": 57.28495407104492
+            },
+            {
+              "date": "2024-10-10",
+              "actual": 43.0,
+              "predicted": 50.27134323120117
+            },
+            {
+              "date": "2024-10-11",
+              "actual": 43.0,
+              "predicted": 43.041019439697266
+            },
+            {
+              "date": "2024-10-12",
+              "actual": 48.0,
+              "predicted": 44.68695831298828
+            },
+            {
+              "date": "2024-10-13",
+              "actual": 45.0,
+              "predicted": 52.08382797241211
+            },
+            {
+              "date": "2024-10-14",
+              "actual": 64.0,
+              "predicted": 66.45843505859375
+            },
+            {
+              "date": "2024-10-15",
+              "actual": 63.0,
+              "predicted": 62.34342956542969
+            },
+            {
+              "date": "2024-10-16",
+              "actual": 57.0,
+              "predicted": 58.5864143371582
+            },
+            {
+              "date": "2024-10-17",
+              "actual": 58.0,
+              "predicted": 47.56499099731445
+            },
+            {
+              "date": "2024-10-18",
+              "actual": 35.0,
+              "predicted": 43.12733459472656
+            },
+            {
+              "date": "2024-10-19",
+              "actual": 36.0,
+              "predicted": 44.81189727783203
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "mae": {
+          "mean": 4.284315472557432,
+          "median": 4.317064557756696,
+          "std": 0.16916872572907532,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 5.451332408794919,
+          "median": 5.42465950290124,
+          "std": 0.04664886621163761,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.0801713692098679,
+          "median": 0.08344894327143187,
+          "std": 0.006422811266500158,
+          "best_fold": 1,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.08503923783401883,
+          "median": 0.08853183330272334,
+          "std": 0.007745142720053079,
+          "best_fold": 1,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.5252640515535242,
+          "median": 0.533767492874809,
+          "std": 0.023095092242473057,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        }
+      },
+      "duration_seconds": 0.1871593749965541,
+      "forecast_stability": 0.14062847651781946,
+      "notes": [],
+      "rank": 2,
+      "trials": [
+        {
+          "parameters": {
+            "reg_lambda": 1.0,
+            "n_estimators": 120,
+            "min_child_weight": 10,
+            "max_depth": 4,
+            "learning_rate": 0.03
+          },
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 4.284315472557432,
+              "median": 4.317064557756696,
+              "std": 0.16916872572907532,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 5.451332408794919,
+              "median": 5.42465950290124,
+              "std": 0.04664886621163761,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.0801713692098679,
+              "median": 0.08344894327143187,
+              "std": 0.006422811266500158,
+              "best_fold": 1,
+              "worst_fold": 3,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.08503923783401883,
+              "median": 0.08853183330272334,
+              "std": 0.007745142720053079,
+              "best_fold": 1,
+              "worst_fold": 3,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 0.5252640515535242,
+              "median": 0.533767492874809,
+              "std": 0.023095092242473057,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 0.1871593749965541
+        },
+        {
+          "parameters": {
+            "reg_lambda": 1.0,
+            "n_estimators": 120,
+            "min_child_weight": 5,
+            "max_depth": 3,
+            "learning_rate": 0.1
+          },
+          "status": "ok",
+          "summary": {
+            "mae": {
+              "mean": 4.356495266868954,
+              "median": 4.183532169886997,
+              "std": 0.3281587709215297,
+              "best_fold": 3,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "rmse": {
+              "mean": 5.303958008837532,
+              "median": 5.366812334658474,
+              "std": 0.4056252291096852,
+              "best_fold": 3,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "wape": {
+              "mean": 0.08146090101876732,
+              "median": 0.0810515857308147,
+              "std": 0.00744149628063159,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "smape": {
+              "mean": 0.08635103354460914,
+              "median": 0.08636926141683221,
+              "std": 0.008383642909731117,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            },
+            "mase": {
+              "mean": 0.5340130920128772,
+              "median": 0.5132349392642146,
+              "std": 0.03958197340181369,
+              "best_fold": 1,
+              "worst_fold": 2,
+              "defined_folds": 3
+            }
+          },
+          "duration_seconds": 0.16900979200727306
+        }
+      ],
+      "tuning_duration_seconds": 0.35616916700382717,
+      "search_method": "seeded_randomized_chronological",
+      "tuning_seed": 42
+    }
+  ],
+  "test_metrics": {
+    "mae": 6.171636612956761,
+    "rmse": 7.693319440310359,
+    "wape": 0.10653873314598601,
+    "smape": 0.11082772260179284,
+    "mase": 0.7627486822347362
+  },
+  "probabilistic_metrics": {
+    "pinball_p10": 1.5665166081540958,
+    "pinball_p50": 3.0858183064783806,
+    "pinball_p90": 1.1441493841688197,
+    "coverage": 0.9285714285714286,
+    "mean_interval_width": 25.482056822906
+  },
+  "test_predictions": [
+    {
+      "date": "2024-11-17",
+      "p10": 41.4493951981877,
+      "p50": 52.85207916899256,
+      "p90": 66.9314520210937,
+      "actual": 65.0
+    },
+    {
+      "date": "2024-11-18",
+      "p10": 52.166371179969445,
+      "p50": 63.569055150774304,
+      "p90": 77.64842800287545,
+      "actual": 66.0
+    },
+    {
+      "date": "2024-11-19",
+      "p10": 55.35270107919105,
+      "p50": 66.75538504999591,
+      "p90": 80.83475790209705,
+      "actual": 64.0
+    },
+    {
+      "date": "2024-11-20",
+      "p10": 47.73410969113408,
+      "p50": 59.13679366193894,
+      "p90": 73.21616651404008,
+      "actual": 59.0
+    },
+    {
+      "date": "2024-11-21",
+      "p10": 38.29812997674008,
+      "p50": 49.700813947544944,
+      "p90": 63.78018679964608,
+      "actual": 55.0
+    },
+    {
+      "date": "2024-11-22",
+      "p10": 35.236131811617724,
+      "p50": 46.63881578242258,
+      "p90": 60.71818863452373,
+      "actual": 52.0
+    },
+    {
+      "date": "2024-11-23",
+      "p10": 35.017201831476754,
+      "p50": 46.41988580228161,
+      "p90": 60.49925865438276,
+      "actual": 44.0
+    },
+    {
+      "date": "2024-11-24",
+      "p10": 39.02686112390726,
+      "p50": 50.429545094712125,
+      "p90": 64.50891794681326,
+      "actual": 45.0
+    },
+    {
+      "date": "2024-11-25",
+      "p10": 50.189514102108035,
+      "p50": 61.59219807291289,
+      "p90": 75.67157092501404,
+      "actual": 65.0
+    },
+    {
+      "date": "2024-11-26",
+      "p10": 47.243498836641585,
+      "p50": 58.64618280744645,
+      "p90": 72.72555565954758,
+      "actual": 75.0
+    },
+    {
+      "date": "2024-11-27",
+      "p10": 45.2197879358112,
+      "p50": 56.622471906616056,
+      "p90": 70.7018447587172,
+      "actual": 54.0
+    },
+    {
+      "date": "2024-11-28",
+      "p10": 38.10316831784901,
+      "p50": 49.50585228865387,
+      "p90": 63.585225140755014,
+      "actual": 63.0
+    },
+    {
+      "date": "2024-11-29",
+      "p10": 33.21342906663601,
+      "p50": 44.61611303744087,
+      "p90": 58.69548588954201,
+      "actual": 51.0
+    },
+    {
+      "date": "2024-11-30",
+      "p10": 33.43737470715665,
+      "p50": 44.84005867796151,
+      "p90": 58.91943153006265,
+      "actual": 53.0
+    }
+  ],
+  "forecast": [
+    {
+      "date": "2024-12-01",
+      "p10": 41.351026008367995,
+      "p50": 52.753709979172854,
+      "p90": 66.833082831274
+    },
+    {
+      "date": "2024-12-02",
+      "p10": 52.64814433336694,
+      "p50": 64.0508283041718,
+      "p90": 78.13020115627295
+    },
+    {
+      "date": "2024-12-03",
+      "p10": 53.23805203489158,
+      "p50": 64.64073600569644,
+      "p90": 78.72010885779758
+    },
+    {
+      "date": "2024-12-04",
+      "p10": 49.44695275686287,
+      "p50": 60.84963672766773,
+      "p90": 74.92900957976887
+    },
+    {
+      "date": "2024-12-05",
+      "p10": 39.63359660971853,
+      "p50": 51.036280580523396,
+      "p90": 65.11565343262453
+    },
+    {
+      "date": "2024-12-06",
+      "p10": 34.60523658842784,
+      "p50": 46.0079205592327,
+      "p90": 60.087293411333846
+    },
+    {
+      "date": "2024-12-07",
+      "p10": 35.24800768797031,
+      "p50": 46.65069165877517,
+      "p90": 60.73006451087631
+    },
+    {
+      "date": "2024-12-08",
+      "p10": 40.05633943841386,
+      "p50": 51.459023409218716,
+      "p90": 65.53839626131986
+    },
+    {
+      "date": "2024-12-09",
+      "p10": 53.69942631912358,
+      "p50": 65.10211028992845,
+      "p90": 79.18148314202958
+    },
+    {
+      "date": "2024-12-10",
+      "p10": 55.007228776391784,
+      "p50": 66.40991274719664,
+      "p90": 80.48928559929779
+    },
+    {
+      "date": "2024-12-11",
+      "p10": 49.45814895656058,
+      "p50": 60.860832927365436,
+      "p90": 74.94020577946658
+    },
+    {
+      "date": "2024-12-12",
+      "p10": 38.306823661922465,
+      "p50": 49.70950763272732,
+      "p90": 63.78888048482847
+    },
+    {
+      "date": "2024-12-13",
+      "p10": 34.77383671703513,
+      "p50": 46.17652068784,
+      "p90": 60.255893539941134
+    },
+    {
+      "date": "2024-12-14",
+      "p10": 34.635565967591795,
+      "p50": 46.03824993839666,
+      "p90": 60.1176227904978
+    }
+  ],
+  "partitions": {
+    "selection": {
+      "start": "2023-01-01",
+      "end": "2024-10-19",
+      "periods": 658
+    },
+    "calibration": {
+      "start": "2024-10-20",
+      "end": "2024-11-16",
+      "periods": 28
+    },
+    "test": {
+      "start": "2024-11-17",
+      "end": "2024-11-30",
+      "periods": 14
+    }
+  },
+  "calibration": {
+    "method": "Prequential signed-residual quantiles with finite-rank correction",
+    "residual_count": 28,
+    "offsets": [
+      -9.097321030127745,
+      2.3053629406771172,
+      16.384735792778258
+    ],
+    "nominal_coverage": 0.8,
+    "records": [
+      {
+        "date": "2024-10-20",
+        "actual": 47.0,
+        "predicted": 49.89552556096122,
+        "residual": -2.895525560961218,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-21",
+        "actual": 64.0,
+        "predicted": 58.858291188006056,
+        "residual": 5.141708811993944,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-22",
+        "actual": 68.0,
+        "predicted": 60.820560392764214,
+        "residual": 7.179439607235786,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-23",
+        "actual": 56.0,
+        "predicted": 52.62368461818954,
+        "residual": 3.376315381810457,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-24",
+        "actual": 52.0,
+        "predicted": 48.933173274550796,
+        "residual": 3.0668267254492036,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-25",
+        "actual": 50.0,
+        "predicted": 42.621353068119085,
+        "residual": 7.378646931880915,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-26",
+        "actual": 54.0,
+        "predicted": 42.64487191825654,
+        "residual": 11.355128081743459,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-27",
+        "actual": 49.0,
+        "predicted": 48.3151478600001,
+        "residual": 0.6848521399998972,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-28",
+        "actual": 73.0,
+        "predicted": 58.02806500456975,
+        "residual": 14.971934995430253,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-29",
+        "actual": 48.0,
+        "predicted": 57.097321030127745,
+        "residual": -9.097321030127745,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-30",
+        "actual": 47.0,
+        "predicted": 53.742670419169855,
+        "residual": -6.742670419169855,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-10-31",
+        "actual": 37.0,
+        "predicted": 46.13218901776457,
+        "residual": -9.132189017764567,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-11-01",
+        "actual": 38.0,
+        "predicted": 40.9411784822212,
+        "residual": -2.941178482221197,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-11-02",
+        "actual": 43.0,
+        "predicted": 41.45610084409497,
+        "residual": 1.5438991559050308,
+        "training_end": "2024-10-19"
+      },
+      {
+        "date": "2024-11-03",
+        "actual": 50.0,
+        "predicted": 49.58273454060855,
+        "residual": 0.41726545939145154,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-04",
+        "actual": 51.0,
+        "predicted": 56.292705894741054,
+        "residual": -5.292705894741054,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-05",
+        "actual": 71.0,
+        "predicted": 60.30221571564372,
+        "residual": 10.697784284356281,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-06",
+        "actual": 75.0,
+        "predicted": 52.27556480804659,
+        "residual": 22.72443519195341,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-07",
+        "actual": 38.0,
+        "predicted": 46.92503319863717,
+        "residual": -8.925033198637173,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-08",
+        "actual": 46.0,
+        "predicted": 42.03895424016128,
+        "residual": 3.9610457598387185,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-09",
+        "actual": 40.0,
+        "predicted": 42.076728300582644,
+        "residual": -2.0767283005826442,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-10",
+        "actual": 54.0,
+        "predicted": 46.49343740292706,
+        "residual": 7.506562597072943,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-11",
+        "actual": 56.0,
+        "predicted": 58.02583912718389,
+        "residual": -2.025839127183893,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-12",
+        "actual": 62.0,
+        "predicted": 56.534865635813645,
+        "residual": 5.465134364186355,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-13",
+        "actual": 69.0,
+        "predicted": 52.61526420722174,
+        "residual": 16.384735792778258,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-14",
+        "actual": 52.0,
+        "predicted": 46.418818298057005,
+        "residual": 5.581181701942995,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-15",
+        "actual": 35.0,
+        "predicted": 40.49489592019122,
+        "residual": -5.494895920191219,
+        "training_end": "2024-11-02"
+      },
+      {
+        "date": "2024-11-16",
+        "actual": 42.0,
+        "predicted": 41.60928995791371,
+        "residual": 0.39071004208629034,
+        "training_end": "2024-11-02"
+      }
+    ]
+  },
+  "artifacts": {
+    "naive": {
+      "model_version": "2.0.0",
+      "training_timestamp": "2026-11-06T15:01:17.865052+00:00",
+      "forecast_horizon": 14,
+      "frequency": "D",
+      "external_features": [],
+      "dataset_id": "966aa627-26d7-4235-a713-33e445f3887d",
+      "store_id": "AUDIT",
+      "product_id": "NEURAL",
+      "training_date_range": {
+        "start": "2023-01-01",
+        "end": "2024-11-30",
+        "periods": 700
+      },
+      "dataset_sha256": "12bfd0f05fde593743511325776358a60523e98a27537886b2fda64e3ec23706",
+      "seed": 42,
+      "python": "3.12.13",
+      "packages": {
+        "numpy": "2.5.3",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.1",
+        "statsmodels": "0.15.0",
+        "lightgbm": "4.7.0",
+        "xgboost": "3.4.1"
+      },
+      "model_name": "naive",
+      "features": [],
+      "hyperparameters": {},
+      "fitted_parameters": {},
+      "backtest_metrics": {
+        "mae": {
+          "mean": 11.80952380952381,
+          "median": 9.428571428571429,
+          "std": 4.8204143554079595,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 13.372196165671653,
+          "median": 10.776959550024168,
+          "std": 5.502413521373545,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.21805428752970202,
+          "median": 0.1774193548387097,
+          "std": 0.07800239250414512,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.23544664926371114,
+          "median": 0.18619473239835016,
+          "std": 0.09780512324920801,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 1.4450928254337931,
+          "median": 1.1542542739241504,
+          "std": 0.5794978767520533,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "tuning_duration_seconds": 0.000843374989926815,
+      "search_method": "single_configuration",
+      "tuning_seed": 42,
+      "production_fit_seconds": 8.058399544097483e-05,
+      "file": "naive.joblib",
+      "sha256": "7cdf3b45b99d622812937c31575ebdd1b0f6ea40c42c41b69b358c9d6812dc9f"
+    },
+    "seasonal_naive": {
+      "model_version": "2.0.0",
+      "training_timestamp": "2026-11-06T15:01:17.865052+00:00",
+      "forecast_horizon": 14,
+      "frequency": "D",
+      "external_features": [],
+      "dataset_id": "966aa627-26d7-4235-a713-33e445f3887d",
+      "store_id": "AUDIT",
+      "product_id": "NEURAL",
+      "training_date_range": {
+        "start": "2023-01-01",
+        "end": "2024-11-30",
+        "periods": 700
+      },
+      "dataset_sha256": "12bfd0f05fde593743511325776358a60523e98a27537886b2fda64e3ec23706",
+      "seed": 42,
+      "python": "3.12.13",
+      "packages": {
+        "numpy": "2.5.3",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.1",
+        "statsmodels": "0.15.0",
+        "lightgbm": "4.7.0",
+        "xgboost": "3.4.1"
+      },
+      "model_name": "seasonal_naive",
+      "features": [],
+      "hyperparameters": {},
+      "fitted_parameters": {},
+      "backtest_metrics": {
+        "mae": {
+          "mean": 6.19047619047619,
+          "median": 6.071428571428571,
+          "std": 1.6817346082295528,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 7.521045845078444,
+          "median": 7.468983484097035,
+          "std": 2.269538299818363,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.11508514262589438,
+          "median": 0.11854951185495119,
+          "std": 0.027495630448434366,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.12200238027816564,
+          "median": 0.12749952037137277,
+          "std": 0.0313238150631873,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.758415280407352,
+          "median": 0.7506793478260869,
+          "std": 0.20275552484834838,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "tuning_duration_seconds": 0.0007027910032775253,
+      "search_method": "single_configuration",
+      "tuning_seed": 42,
+      "production_fit_seconds": 5.195802077651024e-05,
+      "file": "seasonal_naive.joblib",
+      "sha256": "3d1228c3a5fa39eda81b97a11e43c07fd2b890c64388f81c55f25a8f7df817f3"
+    },
+    "moving_average": {
+      "model_version": "2.0.0",
+      "training_timestamp": "2026-11-06T15:01:17.865052+00:00",
+      "forecast_horizon": 14,
+      "frequency": "D",
+      "external_features": [],
+      "dataset_id": "966aa627-26d7-4235-a713-33e445f3887d",
+      "store_id": "AUDIT",
+      "product_id": "NEURAL",
+      "training_date_range": {
+        "start": "2023-01-01",
+        "end": "2024-11-30",
+        "periods": 700
+      },
+      "dataset_sha256": "12bfd0f05fde593743511325776358a60523e98a27537886b2fda64e3ec23706",
+      "seed": 42,
+      "python": "3.12.13",
+      "packages": {
+        "numpy": "2.5.3",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.1",
+        "statsmodels": "0.15.0",
+        "lightgbm": "4.7.0",
+        "xgboost": "3.4.1"
+      },
+      "model_name": "moving_average",
+      "features": [],
+      "hyperparameters": {},
+      "fitted_parameters": {},
+      "backtest_metrics": {
+        "mae": {
+          "mean": 8.074829931972788,
+          "median": 8.357142857142858,
+          "std": 0.7501446017296237,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 9.616860878390101,
+          "median": 9.710608547735148,
+          "std": 0.22246454238046717,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.15099746357357718,
+          "median": 0.1482889733840304,
+          "std": 0.016573830506307768,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.15479593059266283,
+          "median": 0.1501122380307867,
+          "std": 0.015413268190978595,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.9900430202901193,
+          "median": 1.017086330935252,
+          "std": 0.09502411767224712,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        }
+      },
+      "tuning_duration_seconds": 0.0007088749844115227,
+      "search_method": "single_configuration",
+      "tuning_seed": 42,
+      "production_fit_seconds": 4.8416986828669906e-05,
+      "file": "moving_average.joblib",
+      "sha256": "8381a806a2e116a28c3731e1a1815b8bbec20bc81a0938143d873247ba4204b2"
+    },
+    "nbeats": {
+      "model_version": "2.0.0",
+      "training_timestamp": "2026-11-06T15:01:17.865052+00:00",
+      "forecast_horizon": 14,
+      "frequency": "D",
+      "external_features": [],
+      "dataset_id": "966aa627-26d7-4235-a713-33e445f3887d",
+      "store_id": "AUDIT",
+      "product_id": "NEURAL",
+      "training_date_range": {
+        "start": "2023-01-01",
+        "end": "2024-11-30",
+        "periods": 700
+      },
+      "dataset_sha256": "12bfd0f05fde593743511325776358a60523e98a27537886b2fda64e3ec23706",
+      "seed": 42,
+      "python": "3.12.13",
+      "packages": {
+        "numpy": "2.5.3",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.1",
+        "statsmodels": "0.15.0",
+        "lightgbm": "4.7.0",
+        "xgboost": "3.4.1",
+        "torch": "2.14.0"
+      },
+      "model_name": "nbeats",
+      "features": [],
+      "hyperparameters": {
+        "epochs": 2
+      },
+      "fitted_parameters": {
+        "lookback": 28,
+        "horizon": 14,
+        "epochs": 2,
+        "blocks": 3,
+        "hidden": 64,
+        "seed": 42,
+        "final_training_loss": 0.7109614935788241
+      },
+      "backtest_metrics": {
+        "mae": {
+          "mean": 6.489245641799201,
+          "median": 6.108002798897879,
+          "std": 1.384103129008397,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 7.604818179174771,
+          "median": 7.1812182773410935,
+          "std": 1.6294960194569346,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.12049923070040129,
+          "median": 0.11493553653840095,
+          "std": 0.019695341053365525,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.12500514665882445,
+          "median": 0.1220390457893901,
+          "std": 0.018877966907163878,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.7946687711397993,
+          "median": 0.7477472477330279,
+          "std": 0.16354288103565565,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "tuning_duration_seconds": 1.1935289159882814,
+      "search_method": "single_configuration",
+      "tuning_seed": 42,
+      "production_fit_seconds": 0.013056958006927744,
+      "file": "nbeats.joblib",
+      "sha256": "4790289eba4ec33fdc7393072f9f9591ab34b54c008a96c8ce3fe4c12d9e5e5d"
+    },
+    "lightgbm": {
+      "model_version": "2.0.0",
+      "training_timestamp": "2026-11-06T15:01:17.865052+00:00",
+      "forecast_horizon": 14,
+      "frequency": "D",
+      "external_features": [],
+      "dataset_id": "966aa627-26d7-4235-a713-33e445f3887d",
+      "store_id": "AUDIT",
+      "product_id": "NEURAL",
+      "training_date_range": {
+        "start": "2023-01-01",
+        "end": "2024-11-30",
+        "periods": 700
+      },
+      "dataset_sha256": "12bfd0f05fde593743511325776358a60523e98a27537886b2fda64e3ec23706",
+      "seed": 42,
+      "python": "3.12.13",
+      "packages": {
+        "numpy": "2.5.3",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.1",
+        "statsmodels": "0.15.0",
+        "lightgbm": "4.7.0",
+        "xgboost": "3.4.1"
+      },
+      "model_name": "lightgbm",
+      "features": [
+        "day_of_week",
+        "day_of_month",
+        "week_of_year",
+        "month",
+        "quarter",
+        "year",
+        "is_weekend",
+        "price",
+        "price_lag_1",
+        "price_change",
+        "price_change_pct",
+        "sales_lag_1",
+        "sales_lag_2",
+        "sales_lag_3",
+        "sales_lag_7",
+        "sales_lag_14",
+        "sales_lag_28",
+        "rolling_mean_7",
+        "rolling_mean_14",
+        "rolling_mean_28",
+        "rolling_std_7",
+        "rolling_std_14",
+        "rolling_std_28"
+      ],
+      "hyperparameters": {
+        "reg_lambda": 1.0,
+        "num_leaves": 7,
+        "n_estimators": 80,
+        "min_child_samples": 15,
+        "max_depth": 5,
+        "learning_rate": 0.03
+      },
+      "fitted_parameters": {
+        "reg_lambda": 1.0,
+        "num_leaves": 7,
+        "n_estimators": 80,
+        "min_child_samples": 15,
+        "max_depth": 5,
+        "learning_rate": 0.03
+      },
+      "backtest_metrics": {
+        "mae": {
+          "mean": 4.163403577271947,
+          "median": 4.084073961205268,
+          "std": 0.15757470750828095,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 5.2363492895193495,
+          "median": 5.266011992820816,
+          "std": 0.18308482428325734,
+          "best_fold": 3,
+          "worst_fold": 1,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.07774853870017655,
+          "median": 0.07709542278343216,
+          "std": 0.001348588195627424,
+          "best_fold": 2,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.083362701511698,
+          "median": 0.08485679264889613,
+          "std": 0.002984529691080088,
+          "best_fold": 1,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.5102994960311964,
+          "median": 0.5021393619303403,
+          "std": 0.016043760794495602,
+          "best_fold": 2,
+          "worst_fold": 1,
+          "defined_folds": 3
+        }
+      },
+      "tuning_duration_seconds": 0.3062858750054147,
+      "search_method": "seeded_randomized_chronological",
+      "tuning_seed": 42,
+      "production_fit_seconds": 0.050641790992813185,
+      "file": "lightgbm.joblib",
+      "sha256": "ad24c65895476af16091b6e72adbae0d8d184e960ed4bf867d4c81b6ae4ad706"
+    },
+    "xgboost": {
+      "model_version": "2.0.0",
+      "training_timestamp": "2026-11-06T15:01:17.865052+00:00",
+      "forecast_horizon": 14,
+      "frequency": "D",
+      "external_features": [],
+      "dataset_id": "966aa627-26d7-4235-a713-33e445f3887d",
+      "store_id": "AUDIT",
+      "product_id": "NEURAL",
+      "training_date_range": {
+        "start": "2023-01-01",
+        "end": "2024-11-30",
+        "periods": 700
+      },
+      "dataset_sha256": "12bfd0f05fde593743511325776358a60523e98a27537886b2fda64e3ec23706",
+      "seed": 42,
+      "python": "3.12.13",
+      "packages": {
+        "numpy": "2.5.3",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.9.1",
+        "statsmodels": "0.15.0",
+        "lightgbm": "4.7.0",
+        "xgboost": "3.4.1"
+      },
+      "model_name": "xgboost",
+      "features": [
+        "day_of_week",
+        "day_of_month",
+        "week_of_year",
+        "month",
+        "quarter",
+        "year",
+        "is_weekend",
+        "price",
+        "price_lag_1",
+        "price_change",
+        "price_change_pct",
+        "sales_lag_1",
+        "sales_lag_2",
+        "sales_lag_3",
+        "sales_lag_7",
+        "sales_lag_14",
+        "sales_lag_28",
+        "rolling_mean_7",
+        "rolling_mean_14",
+        "rolling_mean_28",
+        "rolling_std_7",
+        "rolling_std_14",
+        "rolling_std_28"
+      ],
+      "hyperparameters": {
+        "reg_lambda": 1.0,
+        "n_estimators": 120,
+        "min_child_weight": 10,
+        "max_depth": 4,
+        "learning_rate": 0.03
+      },
+      "fitted_parameters": {
+        "reg_lambda": 1.0,
+        "n_estimators": 120,
+        "min_child_weight": 10,
+        "max_depth": 4,
+        "learning_rate": 0.03
+      },
+      "backtest_metrics": {
+        "mae": {
+          "mean": 4.284315472557432,
+          "median": 4.317064557756696,
+          "std": 0.16916872572907532,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        },
+        "rmse": {
+          "mean": 5.451332408794919,
+          "median": 5.42465950290124,
+          "std": 0.04664886621163761,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        },
+        "wape": {
+          "mean": 0.0801713692098679,
+          "median": 0.08344894327143187,
+          "std": 0.006422811266500158,
+          "best_fold": 1,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "smape": {
+          "mean": 0.08503923783401883,
+          "median": 0.08853183330272334,
+          "std": 0.007745142720053079,
+          "best_fold": 1,
+          "worst_fold": 3,
+          "defined_folds": 3
+        },
+        "mase": {
+          "mean": 0.5252640515535242,
+          "median": 0.533767492874809,
+          "std": 0.023095092242473057,
+          "best_fold": 1,
+          "worst_fold": 2,
+          "defined_folds": 3
+        }
+      },
+      "tuning_duration_seconds": 0.35616916700382717,
+      "search_method": "seeded_randomized_chronological",
+      "tuning_seed": 42,
+      "production_fit_seconds": 0.0225469580036588,
+      "file": "xgboost.joblib",
+      "sha256": "130a1d314ba34a9b17e23a45c399d8c82942618775273b394c87a51e12db584c"
+    }
+  },
+  "warnings": [],
+  "artifact_reload_verified": true,
+  "csv_export_verified": true,
+  "independent_metric_check": {
+    "mae": 6.171636612956761,
+    "rmse": 7.693319440310359,
+    "wape": 0.10653873314598601,
+    "smape": 0.11082772260179284,
+    "coverage": 0.9285714285714286,
+    "ordered_quantiles": true
+  }
+}

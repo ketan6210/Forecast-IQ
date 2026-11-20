@@ -78,6 +78,39 @@ class BatchRequest(BaseModel):
     items: list[OptimizeRequest] = Field(min_length=1, max_length=1000)
 
 
+class AllocationItem(BaseModel):
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
+    plan_id: str = Field(min_length=1, max_length=36)
+    priority_weight: float = Field(default=1, ge=0.001, le=1000)
+    capacity_per_unit: float | None = Field(default=None, gt=0, le=1e6)
+
+
+class AllocationRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
+    dataset_id: str = Field(min_length=1, max_length=36)
+    items: list[AllocationItem] = Field(min_length=1, max_length=200)
+    purchasing_budget: float | None = Field(default=None, ge=0, le=1e12)
+    available_capacity: float | None = Field(default=None, ge=0, le=1e12)
+    capacity_unit: str | None = Field(default=None, min_length=1, max_length=40)
+
+    @model_validator(mode="after")
+    def consistent_resources(self):
+        if self.purchasing_budget is None and self.available_capacity is None:
+            raise ValueError("Supply a purchasing budget, available capacity, or both.")
+        if len({item.plan_id for item in self.items}) != len(self.items):
+            raise ValueError("Select each inventory plan only once.")
+        if self.available_capacity is not None:
+            if not self.capacity_unit or not self.capacity_unit.strip():
+                raise ValueError("Capacity requires a unit such as cubic metres or pallet slots.")
+            if any(item.capacity_per_unit is None for item in self.items):
+                raise ValueError("Supply capacity per unit for every selected item.")
+        elif self.capacity_unit is not None or any(
+            item.capacity_per_unit is not None for item in self.items
+        ):
+            raise ValueError("Capacity units require an available-capacity constraint.")
+        return self
+
+
 class SimulationRequest(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
     plan_id: str

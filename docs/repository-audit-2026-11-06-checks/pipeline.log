@@ -1,0 +1,103 @@
+/Users/ketan/Desktop/ForecastIQ/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+2026-11-06 10:01:11,476 INFO alembic.runtime.migration Context impl SQLiteImpl.
+2026-11-06 10:01:11,476 INFO alembic.runtime.migration Will assume non-transactional DDL.
+2026-11-06 10:01:11,479 INFO alembic.runtime.migration Running upgrade  -> 0001_forecasting, Create or adopt the frozen Phase 1/2 schema without deleting existing records.
+2026-11-06 10:01:11,482 INFO alembic.runtime.migration Running upgrade 0001_forecasting -> 0002_inventory, Add inventory plans and simulation/policy runs; preserve forecasting data.
+2026-11-06 10:01:11,522 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.035379
+2026-11-06 10:01:11,532 INFO httpx HTTP Request: POST http://testserver/datasets/demo "HTTP/1.1 201 Created"
+2026-11-06 10:01:11,542 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.004952
+2026-11-06 10:01:11,545 INFO forecastiq.advanced model=naive operation=backtest folds=3 duration_seconds=0.001091
+2026-11-06 10:01:11,547 INFO forecastiq.advanced model=seasonal_naive operation=backtest folds=3 duration_seconds=0.000916
+2026-11-06 10:01:11,548 INFO forecastiq.advanced model=moving_average operation=backtest folds=3 duration_seconds=0.001279
+2026-11-06 10:01:11,841 INFO forecastiq.advanced model=linear_regression operation=backtest folds=3 duration_seconds=0.292618
+2026-11-06 10:01:11,890 INFO forecastiq.advanced model=arima operation=backtest folds=3 duration_seconds=0.048344
+2026-11-06 10:01:12,015 INFO forecastiq.advanced model=sarima operation=backtest folds=3 duration_seconds=0.125501
+2026-11-06 10:01:12,041 INFO forecastiq.advanced model=ets operation=backtest folds=3 duration_seconds=0.025373
+2026-11-06 10:01:12,356 INFO forecastiq.advanced model=lightgbm operation=backtest folds=3 duration_seconds=0.314165
+2026-11-06 10:01:12,652 INFO forecastiq.advanced model=lightgbm operation=backtest folds=3 duration_seconds=0.295340
+2026-11-06 10:01:12,951 INFO forecastiq.advanced model=lightgbm operation=backtest folds=3 duration_seconds=0.299439
+2026-11-06 10:01:13,280 INFO forecastiq.advanced model=lightgbm operation=backtest folds=3 duration_seconds=0.327979
+2026-11-06 10:01:13,592 INFO forecastiq.advanced model=xgboost operation=backtest folds=3 duration_seconds=0.306803
+2026-11-06 10:01:13,871 INFO forecastiq.advanced model=xgboost operation=backtest folds=3 duration_seconds=0.278570
+2026-11-06 10:01:14,154 INFO forecastiq.advanced model=xgboost operation=backtest folds=3 duration_seconds=0.283182
+2026-11-06 10:01:14,487 INFO forecastiq.advanced model=xgboost operation=backtest folds=3 duration_seconds=0.332735
+2026-11-06 10:01:14,488 WARNING forecastiq.advanced model=nbeats operation=backtest status=failed reason=N-BEATS skipped: at least 512 periods are required in every training fold.
+2026-11-06 10:01:14,874 INFO forecastiq.advanced run_id=7924f448-3a78-4fcb-aa25-b2d0b95b33a0 champion=ets operation=train duration_seconds=3.332319
+2026-11-06 10:01:14,883 INFO httpx HTTP Request: POST http://testserver/forecast/train "HTTP/1.1 201 Created"
+2026-11-06 10:01:14,899 INFO httpx HTTP Request: POST http://testserver/inventory/optimize "HTTP/1.1 201 Created"
+2026-11-06 10:01:14,903 INFO httpx HTTP Request: POST http://testserver/inventory/simulate "HTTP/1.1 201 Created"
+2026-11-06 10:01:14,912 INFO httpx HTTP Request: POST http://testserver/inventory/simulate "HTTP/1.1 201 Created"
+2026-11-06 10:01:14,968 INFO httpx HTTP Request: POST http://testserver/inventory/policy-comparison "HTTP/1.1 201 Created"
+2026-11-06 10:01:14,989 INFO httpx HTTP Request: POST http://testserver/inventory/scenario "HTTP/1.1 201 Created"
+2026-11-06 10:01:14,994 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.003467
+2026-11-06 10:01:14,996 INFO forecastiq.advanced model=naive operation=backtest folds=2 duration_seconds=0.000716
+2026-11-06 10:01:14,997 INFO forecastiq.advanced model=seasonal_naive operation=backtest folds=2 duration_seconds=0.000655
+2026-11-06 10:01:14,998 INFO forecastiq.advanced model=moving_average operation=backtest folds=2 duration_seconds=0.000611
+2026-11-06 10:01:15,003 INFO forecastiq.advanced run_id=f5c162a1-a77e-4bf4-a5c5-403c392c2b96 champion=naive operation=train duration_seconds=0.009170
+2026-11-06 10:01:15,008 INFO httpx HTTP Request: POST http://testserver/forecast/train "HTTP/1.1 201 Created"
+2026-11-06 10:01:15,012 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.002993
+2026-11-06 10:01:15,014 INFO forecastiq.advanced model=naive operation=backtest folds=2 duration_seconds=0.000702
+2026-11-06 10:01:15,015 INFO forecastiq.advanced model=seasonal_naive operation=backtest folds=2 duration_seconds=0.000649
+2026-11-06 10:01:15,016 INFO forecastiq.advanced model=moving_average operation=backtest folds=2 duration_seconds=0.000888
+2026-11-06 10:01:15,022 INFO forecastiq.advanced run_id=dabd6a1f-991a-4856-afe2-6ef5f77c6bd2 champion=moving_average operation=train duration_seconds=0.009534
+2026-11-06 10:01:15,027 INFO httpx HTTP Request: POST http://testserver/forecast/train "HTTP/1.1 201 Created"
+2026-11-06 10:01:15,037 INFO httpx HTTP Request: POST http://testserver/inventory/batch "HTTP/1.1 201 Created"
+2026-11-06 10:01:15,045 INFO httpx HTTP Request: POST http://testserver/inventory/simulate "HTTP/1.1 201 Created"
+2026-11-06 10:01:15,053 INFO httpx HTTP Request: POST http://testserver/inventory/simulate "HTTP/1.1 201 Created"
+2026-11-06 10:01:15,057 INFO httpx HTTP Request: GET http://testserver/inventory/kpis?dataset_id=c91a1e35-36af-40b2-b4da-a8b1abb82e90 "HTTP/1.1 200 OK"
+2026-11-06 10:01:15,059 INFO httpx HTTP Request: GET http://testserver/inventory/abc-analysis?dataset_id=c91a1e35-36af-40b2-b4da-a8b1abb82e90 "HTTP/1.1 200 OK"
+2026-11-06 10:01:15,061 INFO httpx HTTP Request: GET http://testserver/inventory/export?dataset_id=c91a1e35-36af-40b2-b4da-a8b1abb82e90 "HTTP/1.1 200 OK"
+2026-11-06 10:01:15,063 INFO alembic.runtime.migration Context impl SQLiteImpl.
+2026-11-06 10:01:15,063 INFO alembic.runtime.migration Will assume non-transactional DDL.
+2026-11-06 10:01:15,064 INFO alembic.runtime.migration Running upgrade  -> 0001_forecasting, Create or adopt the frozen Phase 1/2 schema without deleting existing records.
+2026-11-06 10:01:15,070 INFO alembic.runtime.migration Running upgrade 0001_forecasting -> 0002_inventory, Add inventory plans and simulation/policy runs; preserve forecasting data.
+2026-11-06 10:01:15,730 INFO httpx HTTP Request: POST http://testserver/inventory/batch "HTTP/1.1 201 Created"
+2026-11-06 10:01:15,775 INFO httpx HTTP Request: GET http://testserver/forecast/runs/7924f448-3a78-4fcb-aa25-b2d0b95b33a0 "HTTP/1.1 200 OK"
+2026-11-06 10:01:15,783 INFO httpx HTTP Request: POST http://testserver/forecast/predict "HTTP/1.1 200 OK"
+demo forecast, inventory, simulation and 1000-location benchmark passed
+2026-11-06 10:01:15,792 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.004979
+2026-11-06 10:01:15,795 INFO httpx HTTP Request: POST http://testserver/datasets/upload "HTTP/1.1 201 Created"
+2026-11-06 10:01:15,797 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.001708
+2026-11-06 10:01:15,799 INFO forecastiq.advanced model=naive operation=backtest folds=3 duration_seconds=0.000843
+2026-11-06 10:01:15,800 INFO forecastiq.advanced model=seasonal_naive operation=backtest folds=3 duration_seconds=0.000703
+2026-11-06 10:01:15,801 INFO forecastiq.advanced model=moving_average operation=backtest folds=3 duration_seconds=0.000709
+2026-11-06 10:01:16,995 INFO forecastiq.advanced model=nbeats operation=backtest folds=3 duration_seconds=1.193529
+2026-11-06 10:01:17,153 INFO forecastiq.advanced model=lightgbm operation=backtest folds=3 duration_seconds=0.157310
+2026-11-06 10:01:17,302 INFO forecastiq.advanced model=lightgbm operation=backtest folds=3 duration_seconds=0.148976
+2026-11-06 10:01:17,490 INFO forecastiq.advanced model=xgboost operation=backtest folds=3 duration_seconds=0.187159
+2026-11-06 10:01:17,659 INFO forecastiq.advanced model=xgboost operation=backtest folds=3 duration_seconds=0.169010
+2026-11-06 10:01:18,009 INFO forecastiq.advanced run_id=e7b51b5f-c97f-4fc6-9c4a-95c7fc37bbc7 champion=lightgbm operation=train duration_seconds=2.212010
+2026-11-06 10:01:18,017 INFO httpx HTTP Request: POST http://testserver/forecast/train "HTTP/1.1 201 Created"
+2026-11-06 10:01:18,062 INFO httpx HTTP Request: POST http://testserver/forecast/predict "HTTP/1.1 200 OK"
+2026-11-06 10:01:18,065 INFO httpx HTTP Request: GET http://testserver/forecast/export/e7b51b5f-c97f-4fc6-9c4a-95c7fc37bbc7 "HTTP/1.1 200 OK"
+eligible neural API training, persistence and quantiles passed
+2026-11-06 10:01:18,072 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.003844
+2026-11-06 10:01:18,073 INFO httpx HTTP Request: POST http://testserver/datasets/upload "HTTP/1.1 201 Created"
+2026-11-06 10:01:19,741 INFO forecastiq.timings dataset_load_seconds duration_seconds=1.650651
+2026-11-06 10:01:20,341 INFO httpx HTTP Request: POST http://testserver/datasets/upload "HTTP/1.1 201 Created"
+2026-11-06 10:01:20,464 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.122372
+catalog dry_run {'dataset_id': '4be5326f-0e4c-4a72-ac68-0c460d5ad625', 'dry_run': True, 'validated': 500, 'imported': 0, 'skipped': 0}
+2026-11-06 10:01:28,410 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.133504
+catalog registration {'dataset_id': '4be5326f-0e4c-4a72-ac68-0c460d5ad625', 'dry_run': False, 'validated': 500, 'imported': 500, 'skipped': 0}
+2026-11-06 10:01:39,198 INFO forecastiq.timings dataset_load_seconds duration_seconds=0.123149
+catalog repeat {'dataset_id': '4be5326f-0e4c-4a72-ac68-0c460d5ad625', 'dry_run': False, 'validated': 500, 'imported': 0, 'skipped': 500}
+2026-11-06 10:01:50,096 INFO httpx HTTP Request: GET http://testserver/forecast/models?dataset_id=4be5326f-0e4c-4a72-ac68-0c460d5ad625&offset=0 "HTTP/1.1 200 OK"
+2026-11-06 10:01:50,528 INFO httpx HTTP Request: GET http://testserver/forecast/models?dataset_id=4be5326f-0e4c-4a72-ac68-0c460d5ad625&offset=100 "HTTP/1.1 200 OK"
+2026-11-06 10:01:50,958 INFO httpx HTTP Request: GET http://testserver/forecast/models?dataset_id=4be5326f-0e4c-4a72-ac68-0c460d5ad625&offset=200 "HTTP/1.1 200 OK"
+2026-11-06 10:01:51,384 INFO httpx HTTP Request: GET http://testserver/forecast/models?dataset_id=4be5326f-0e4c-4a72-ac68-0c460d5ad625&offset=300 "HTTP/1.1 200 OK"
+2026-11-06 10:01:51,807 INFO httpx HTTP Request: GET http://testserver/forecast/models?dataset_id=4be5326f-0e4c-4a72-ac68-0c460d5ad625&offset=400 "HTTP/1.1 200 OK"
+2026-11-06 10:01:52,226 INFO httpx HTTP Request: GET http://testserver/forecast/models?dataset_id=4be5326f-0e4c-4a72-ac68-0c460d5ad625&offset=500 "HTTP/1.1 200 OK"
+2026-11-06 10:01:52,233 INFO httpx HTTP Request: GET http://testserver/forecast/runs/c9b2c4da-9821-43b4-9df9-5d754becbefd "HTTP/1.1 200 OK"
+2026-11-06 10:01:52,519 INFO httpx HTTP Request: POST http://testserver/forecast/predict "HTTP/1.1 200 OK"
+2026-11-06 10:01:52,524 INFO httpx HTTP Request: GET http://testserver/forecast/runs/d5da1f31-6ff6-4aa4-9067-1acea3e66af6 "HTTP/1.1 200 OK"
+2026-11-06 10:01:52,792 INFO httpx HTTP Request: POST http://testserver/forecast/predict "HTTP/1.1 200 OK"
+2026-11-06 10:01:52,798 INFO httpx HTTP Request: GET http://testserver/forecast/runs/1981d1bf-bbee-4e24-95cc-e6d43c4f9a63 "HTTP/1.1 200 OK"
+2026-11-06 10:01:53,068 INFO httpx HTTP Request: POST http://testserver/forecast/predict "HTTP/1.1 200 OK"
+2026-11-06 10:01:53,074 INFO httpx HTTP Request: GET http://testserver/forecast/runs/edcdb401-1680-4b7e-a6b1-e94875bdcbe5 "HTTP/1.1 200 OK"
+2026-11-06 10:01:53,346 INFO httpx HTTP Request: POST http://testserver/forecast/predict "HTTP/1.1 200 OK"
+2026-11-06 10:01:53,352 INFO httpx HTTP Request: GET http://testserver/forecast/runs/1040a83a-5072-4388-af6a-e6ca98a3b412 "HTTP/1.1 200 OK"
+2026-11-06 10:01:53,631 INFO httpx HTTP Request: POST http://testserver/forecast/predict "HTTP/1.1 200 OK"
+2026-11-06 10:01:54,714 INFO httpx HTTP Request: POST http://testserver/inventory/batch "HTTP/1.1 201 Created"
+2026-11-06 10:01:54,773 INFO httpx HTTP Request: GET http://testserver/inventory/kpis?dataset_id=4be5326f-0e4c-4a72-ac68-0c460d5ad625 "HTTP/1.1 200 OK"
+500-series catalog integration and five champion/calibrator reloads passed

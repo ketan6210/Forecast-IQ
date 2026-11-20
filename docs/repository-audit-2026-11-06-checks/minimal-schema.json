@@ -1,0 +1,51 @@
+{
+  "source_columns": [
+    "date",
+    "units_sold"
+  ],
+  "response": {
+    "frequency": "D",
+    "column_mapping": {
+      "date": "date",
+      "units_sold": "units_sold",
+      "store_id": "__single__",
+      "product_id": "__single__",
+      "price": "price"
+    },
+    "external_features": [],
+    "row_count": 140,
+    "processed_row_count": 140,
+    "date_min": "2023-01-01",
+    "date_max": "2023-05-20",
+    "store_count": 1,
+    "product_count": 1,
+    "category_count": null,
+    "missing_value_summary": {
+      "date": 0,
+      "units_sold": 0,
+      "store_id": 0,
+      "product_id": 0,
+      "price": 140
+    },
+    "missing_rate": 0.2,
+    "duplicate_count": 0,
+    "duplicate_observation_count": 0,
+    "invalid_date_count": 0,
+    "negative_sales_count": 0,
+    "invalid_price_count": 0,
+    "missing_date_count": 0,
+    "chronologically_ordered": true,
+    "validation_status": "PASS_WITH_WARNINGS",
+    "warnings": [
+      "100.0% of price values are missing."
+    ],
+    "errors": [],
+    "dataset_id": "473249f4-802d-400b-af46-d1f36c6b9617",
+    "filename": "two-columns.csv",
+    "is_demo": false,
+    "created_at": "2026-11-06T15:01:18.072851+00:00",
+    "timings": {
+      "dataset_load_seconds": 0.003844
+    }
+  }
+}

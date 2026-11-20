@@ -206,9 +206,11 @@ Immediate supply shortfalls and suggested expedite quantities are separate from 
 
 Simulation supports fixed P50 demand or **100–1,000 Monte Carlo paths**, scheduled receipts, variable lead times, lost sales/backorders, and inventory/service/cost distributions. Policy comparison searches a finite candidate set for the lowest simulated expected operating cost meeting a minimum mean fill rate, using common random numbers. Operating cost includes holding, ordering, and shortage costs; purchasing cost and profit are excluded.
 
-Portfolio tools support up to **1,000 inventory rows per batch**, CSV imports, saved plans, ABC/XYZ segmentation, and exports. Recommendations are independent per SKU; shared purchasing budgets and warehouse-capacity allocation are not implemented.
+Portfolio tools support up to **1,000 inventory rows per batch**, CSV imports, saved plans, ABC/XYZ segmentation, and exports. Shared allocation combines up to **200 saved plans at one location** under a purchasing budget, available capacity, or both. It maximizes user-weighted allocated units while respecting recommendations, minimum order quantities, order multiples, and position caps. Decisions can be saved, restored, and exported.
 
 Read the [inventory methodology](docs/phase3-methodology.md) and [receipt-timing/catalog update](docs/phase3-continuation-2026-10-13.md) for formulas, assumptions, and regression evidence.
+
+The [November 11 implementation and validation report](docs/phase3-allocation-2026-11-11.md) defines the allocation contract and current phase status. The Phase 1 quality label now correctly describes mapped required fields, including optional-price and single-series uploads.
 
 ### Register saved catalog forecasts
 
@@ -293,6 +295,9 @@ Open `/docs` on the backend for complete interactive request/response schemas. D
 | GET | `/forecast/backtest`, `/forecast/model-comparison` | Evaluation evidence |
 | GET | `/forecast/explainability`, `/forecast/export/{run_id}` | Tree explanations or CSV export |
 | POST | `/inventory/optimize`, `/inventory/batch`, `/inventory/import` | Individual or batch inventory plans |
+| POST | `/inventory/allocate` | Joint purchasing budget/capacity allocation |
+| GET | `/inventory/allocations`, `/inventory/allocations/{id}` | List or restore saved allocations |
+| GET | `/inventory/allocations/{id}/export` | Allocation CSV |
 | POST | `/inventory/simulate`, `/inventory/policy-comparison`, `/inventory/scenario` | Simulation and comparisons |
 | GET | `/inventory/recommendations`, `/inventory/kpis`, `/inventory/export` | Queue, portfolio metrics, and CSV |
 
@@ -336,7 +341,7 @@ Playwright starts its own API/Vite servers on ports 8000/5173 and expects the Py
 
 The Python suite covers validation, causal features, chronology, model fitting/fallbacks, metrics, quantiles, serialization, SHAP reconstruction, inventory formulas, supply timing, catalog imports, and API persistence. Browser tests cover forecasting, inventory, exports, saved-state restoration, delayed responses, and mobile layouts. Neural tests skip explicitly if optional PyTorch is absent.
 
-The publication check on **November 5, 2026** passed **237 Python tests** and Ruff. See [publication verification](docs/publication-verification.md) for the complete current checks. The [October 13 verification](docs/phase3-continuation-2026-10-13.md#verification) records 19 passing Chromium workflows against PostgreSQL; those historical results are retained separately.
+The **November 11, 2026** checks cover the Phase 1 label regression, joint allocation, and demand validation. See the [current implementation report](docs/phase3-allocation-2026-11-11.md) for results and evidence. The [November 5 publication check](docs/publication-verification.md) and [October 13 verification](docs/phase3-continuation-2026-10-13.md#verification) remain historical records.
 
 ## Troubleshooting
 
@@ -353,7 +358,9 @@ ForecastIQ is a local portfolio/research application. It does not include authen
 
 Forecasts are independent per series. Global/hierarchical reconciliation, cold-start modeling, intraday/irregular frequencies, planned future covariates, and stockout-censored demand correction are not implemented. Empirical uncertainty intervals and simulated inventory service levels depend on their assumptions and must be checked on representative data. Targets above P90 under quantile interpolation rely on extrapolation.
 
-Inventory policy selection uses a finite candidate set. It does not jointly allocate shared budgets or warehouse capacity across SKUs. Demo inventory costs and quantities are assumptions; reported simulation outcomes are not measured commercial savings.
+Inventory policy selection uses a finite candidate set. Shared allocation is one purchasing decision at one location; it does not jointly simulate recurring multi-SKU policies or optimize transfers between warehouses. Purchasing budgets cover unit purchase costs; capacity means space reserved for new orders after existing stock and committed receipts. Demo inventory costs and quantities are assumptions; reported simulation outcomes are not measured commercial savings.
+
+The November 11 demand validation recomputed 45,000 saved holdout predictions from 500 Kaggle series. P10–P90 coverage was **73.91% against an 80% target**. Observed supplier lead times, fill rate, and cycle service remain **unverified** because the required operational records are unavailable. See the [validation report](docs/phase3-allocation-2026-11-11.md) for scope and source provenance.
 
 ## Documentation
 
@@ -361,8 +368,9 @@ Inventory policy selection uses a finite candidate set. It does not jointly allo
 |---|---|
 | [Technical guide](docs/technical-guide.md) | Detailed forecasting methods, metrics, artifact contracts, and historical experiments |
 | [Inventory methodology](docs/phase3-methodology.md) | Safety stock, replenishment, simulation, policies, and segmentation |
+| [November 11 implementation and validation](docs/phase3-allocation-2026-11-11.md) | Current phase status, shared allocation, demand coverage, and dated checks |
 | [Inventory walkthrough](docs/phase3-measured-results.md) | Recorded forecast-to-inventory examples |
-| [Receipt timing and catalog integration](docs/phase3-continuation-2026-10-13.md) | Latest inventory behavior and catalog verification |
+| [Receipt timing and catalog integration](docs/phase3-continuation-2026-10-13.md) | October 13 inventory behavior and catalog verification |
 | [Full Kaggle batch](docs/kaggle-batch/README.md) | 500-series experiment, exports, provenance, and reproduction |
 | [Completion report](docs/completion-report.md) | Earlier end-to-end checks and known limitations |
 | [Publication verification](docs/publication-verification.md) | Checks performed for this GitHub snapshot |

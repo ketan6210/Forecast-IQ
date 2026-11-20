@@ -1,0 +1,90 @@
+{
+  "dataset_id": "bb8cabdd-8f01-4748-96b4-ca1532ad081f",
+  "location_id": "STORE_01",
+  "currency": "USD",
+  "items": [
+    {
+      "plan_id": "5e371d23-9b44-41f5-a09d-53bd4b188028",
+      "forecast_run_id": "869a5aff-b33a-4b50-aabd-e39c1eb091f4",
+      "sku_id": "SKU_001",
+      "store_id": "STORE_01",
+      "location_id": "STORE_01",
+      "requested_quantity": 114,
+      "allocated_quantity": 0,
+      "deferred_quantity": 114,
+      "priority_weight": 1,
+      "unit_cost": 3,
+      "purchase_cost": 0,
+      "capacity_per_unit": 2,
+      "capacity_used": 0,
+      "minimum_order_quantity": 6,
+      "order_multiple": 3,
+      "inventory_position": 0,
+      "max_inventory_position": null,
+      "expedite_quantity": 81,
+      "status": "deferred"
+    },
+    {
+      "plan_id": "a7ea893f-42a6-4ff4-8342-3f16d46dfd11",
+      "forecast_run_id": "584dac4f-c75b-4a75-89e9-27eacbd6a2d9",
+      "sku_id": "SKU_002",
+      "store_id": "STORE_01",
+      "location_id": "STORE_01",
+      "requested_quantity": 96,
+      "allocated_quantity": 9,
+      "deferred_quantity": 87,
+      "priority_weight": 2,
+      "unit_cost": 3,
+      "purchase_cost": 27,
+      "capacity_per_unit": 2,
+      "capacity_used": 18,
+      "minimum_order_quantity": 6,
+      "order_multiple": 3,
+      "inventory_position": 0,
+      "max_inventory_position": null,
+      "expedite_quantity": 67,
+      "status": "partial"
+    }
+  ],
+  "solver_status": "optimal",
+  "relative_gap": 0,
+  "objective": "Maximize sum(priority_weight × allocated units), capped at each saved recommendation, subject to shared purchasing budget, available capacity and pack/MOQ constraints.",
+  "weighted_allocated_units": 18,
+  "total_requested_quantity": 210,
+  "total_allocated_quantity": 9,
+  "total_deferred_quantity": 201,
+  "purchase_cost": 27,
+  "purchasing_budget": 36,
+  "budget_remaining": 9,
+  "available_capacity": 18,
+  "capacity_used": 18,
+  "capacity_remaining": 0,
+  "capacity_unit": "m3",
+  "notes": [
+    "One allocation for the selected saved plans at one location. This is not a purchase order and does not modify plans or their recurring simulation policies.",
+    "Budget covers unit purchase costs only; ordering fees, taxes and freight are excluded.",
+    "Available capacity is space reserved for these new orders after existing stock and committed receipts. Use one shared capacity unit; no demand-based space release assumed.",
+    "Priority is per unit, defaults to one, and is supplied by the user. Weighted units are not profit, cost savings or a service-level guarantee. Equivalent optima may differ.",
+    "Zero orders are allowed when MOQ or shared limits prevent replenishment. Expediting existing late supply remains a separate action."
+  ],
+  "allocation_id": "a87c8158-c490-42b6-9a61-a42d726dc3a3",
+  "created_at": "2026-11-11T21:48:52.624285+00:00",
+  "configuration": {
+    "dataset_id": "bb8cabdd-8f01-4748-96b4-ca1532ad081f",
+    "items": [
+      {
+        "plan_id": "5e371d23-9b44-41f5-a09d-53bd4b188028",
+        "priority_weight": 1,
+        "capacity_per_unit": 2
+      },
+      {
+        "plan_id": "a7ea893f-42a6-4ff4-8342-3f16d46dfd11",
+        "priority_weight": 2,
+        "capacity_per_unit": 2
+      }
+    ],
+    "purchasing_budget": 36,
+    "available_capacity": 18,
+    "capacity_unit": "m3"
+  }
+}

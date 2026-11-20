@@ -1,0 +1,121 @@
+{
+  "source": "storage/kaggle-batch",
+  "dataset_rows": 913000,
+  "dry_run": {
+    "dataset_id": "4be5326f-0e4c-4a72-ac68-0c460d5ad625",
+    "dry_run": true,
+    "validated": 500,
+    "imported": 0,
+    "skipped": 0,
+    "seconds": 7.934504417004064
+  },
+  "registration": {
+    "dataset_id": "4be5326f-0e4c-4a72-ac68-0c460d5ad625",
+    "dry_run": false,
+    "validated": 500,
+    "imported": 500,
+    "skipped": 0,
+    "seconds": 10.795444415998645
+  },
+  "repeat": {
+    "dataset_id": "4be5326f-0e4c-4a72-ac68-0c460d5ad625",
+    "dry_run": false,
+    "validated": 500,
+    "imported": 0,
+    "skipped": 500,
+    "seconds": 10.582022457994753
+  },
+  "page_sizes": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    0
+  ],
+  "champions": {
+    "lightgbm": 441,
+    "xgboost": 59
+  },
+  "sampled_artifact_reloads": [
+    {
+      "run_id": "c9b2c4da-9821-43b4-9df9-5d754becbefd",
+      "champion": "lightgbm",
+      "points": 90,
+      "exact_match": true
+    },
+    {
+      "run_id": "d5da1f31-6ff6-4aa4-9067-1acea3e66af6",
+      "champion": "lightgbm",
+      "points": 90,
+      "exact_match": true
+    },
+    {
+      "run_id": "1981d1bf-bbee-4e24-95cc-e6d43c4f9a63",
+      "champion": "lightgbm",
+      "points": 90,
+      "exact_match": true
+    },
+    {
+      "run_id": "edcdb401-1680-4b7e-a6b1-e94875bdcbe5",
+      "champion": "lightgbm",
+      "points": 90,
+      "exact_match": true
+    },
+    {
+      "run_id": "1040a83a-5072-4388-af6a-e6ca98a3b412",
+      "champion": "lightgbm",
+      "points": 90,
+      "exact_match": true
+    }
+  ],
+  "inventory_batch": {
+    "successful": 500,
+    "failed": 0,
+    "seconds": 1.1176162499759812,
+    "portfolio": {
+      "series_count": 500,
+      "total_inventory_value": null,
+      "high_risk_series": 500,
+      "below_reorder_point": 0,
+      "expedite_needed": 500,
+      "plans_requiring_recalculation": 0,
+      "total_recommended_order_quantity": 0.0,
+      "average_target_service_level": 0.9499999999999997,
+      "currency": null,
+      "notes": [
+        "Counts refer to SKU/location pairs. Monetary totals require complete costs and one shared currency; no currency conversion is assumed.",
+        "Target service level is a configuration, not measured achieved service."
+      ]
+    },
+    "assumptions": "0 on hand; 10000 due period 20; lead time 7; 100 samples. Not observed business stock."
+  },
+  "kpis": {
+    "series_count": 500,
+    "total_inventory_value": null,
+    "high_risk_series": 500,
+    "below_reorder_point": 0,
+    "expedite_needed": 500,
+    "plans_requiring_recalculation": 0,
+    "total_recommended_order_quantity": 0.0,
+    "average_target_service_level": 0.9499999999999997,
+    "currency": null,
+    "notes": [
+      "Counts refer to SKU/location pairs. Monetary totals require complete costs and one shared currency; no currency conversion is assumed.",
+      "Target service level is a configuration, not measured achieved service.",
+      "Simulated totals require every current plan to have a simulation with matching forecast start, frequency, horizon, simulation and shortage modes; monetary sums also require a shared currency. Service means weight series equally. Portfolio cost percentiles are not inferred from marginal results."
+    ],
+    "abc_distribution": {
+      "unclassified": 500
+    },
+    "simulated_series_count": 0,
+    "expected_holding_cost": null,
+    "expected_stockout_cost": null,
+    "expected_ordering_cost": null,
+    "expected_total_cost": null,
+    "fill_rate": null,
+    "average_service_level": null
+  },
+  "artifacts_checked": 3500,
+  "scope": "Temporary SQLite registration; no existing database or source artifact changed; no catalog retraining."
+}

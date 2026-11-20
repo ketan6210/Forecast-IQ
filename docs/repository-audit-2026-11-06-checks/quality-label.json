@@ -1,0 +1,10 @@
+{
+  "source_columns": [
+    "date",
+    "units_sold"
+  ],
+  "upload_status": 201,
+  "missing_price_rows": 140,
+  "rendered_required_column_claim": "All 5 present",
+  "finding": "Hard-coded required-field status disagrees with optional price and synthesized identifiers."
+}
