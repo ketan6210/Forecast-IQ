@@ -3,6 +3,7 @@ import {
   ArrowRight,
   CalendarDays,
   ChartNoAxesCombined,
+  CircleHelp,
   Info,
   Play,
   Sparkles,
@@ -18,9 +19,25 @@ import {
   YAxis,
 } from "recharts";
 import { api } from "../api";
-import { Loading, Panel, Stat } from "../components";
+import {
+  EmptyState,
+  ErrorState,
+  Loading,
+  PageHeader,
+  Panel,
+  Stat,
+} from "../components";
 import { date, metricValue, modelNames, number, shortDate } from "../format";
+import { chartTheme } from "../theme";
 import type { Dataset, Forecast, Metric, Options } from "../types";
+
+const metricHelp: Record<Metric, string> = {
+  wape: "Weighted absolute percentage error relative to total demand. Lower is better.",
+  mase: "Absolute error scaled by a weekly naive baseline. Below 1 beats that scale.",
+  mae: "Mean absolute error in units. Lower is better.",
+  rmse: "Root mean squared error in units; larger misses receive more weight.",
+  smape: "Symmetric percentage error across the test period. Lower is better.",
+};
 
 export default function ForecastPage({
   dataset,
@@ -95,16 +112,16 @@ export default function ForecastPage({
     : [];
   return (
     <>
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">FROM HISTORY TO WHAT’S NEXT</span>
-          <h1>Demand forecast</h1>
-          <p>A grounded outlook for one product, at one store.</p>
-        </div>
-        <span className="outline-badge">
-          <ChartNoAxesCombined size={15} /> 4 baseline models
-        </span>
-      </div>
+      <PageHeader
+        eyebrow="From history to what’s next"
+        title="Demand forecast"
+        description="Configure one store and product, compare transparent baselines, and generate a measured outlook."
+        action={
+          <span className="outline-badge">
+            <ChartNoAxesCombined size={15} /> 4 baseline models
+          </span>
+        }
+      />
       <div className="forecast-controls">
         <label>
           <span>Store</span>
@@ -186,28 +203,23 @@ export default function ForecastPage({
           </small>
         </div>
       )}
-      {error && (
-        <div className="alert error" role="alert">
-          {error}
-        </div>
-      )}
+      {error && <ErrorState message={error} onRetry={() => void generate()} />}
       {busy ? (
         <Loading text="Training four baselines, comparing validation results, and evaluating on the test period…" />
       ) : !result ? (
-        <div className="forecast-empty">
-          <div className="empty-chart-icon">
-            <ChartNoAxesCombined size={38} />
-          </div>
-          <h2>Your next forecast starts here</h2>
-          <p>
-            Choose a store, a product, and a horizon.
-            <br />
-            We’ll compare four baselines using chronological validation.
-          </p>
-          <span>
-            <Info size={14} /> At least 90 days of daily history required
-          </span>
-        </div>
+        <EmptyState
+          icon={<ChartNoAxesCombined size={34} />}
+          title="Your next forecast starts here"
+          description={
+            <>
+              Choose a store, product, and horizon. We’ll compare four baselines
+              using chronological validation.
+              <span className="empty-state-note">
+                <Info size={14} /> At least 90 days of daily history required
+              </span>
+            </>
+          }
+        />
       ) : (
         <>
           <div className="forecast-context">
@@ -287,7 +299,7 @@ export default function ForecastPage({
                   <CartesianGrid
                     strokeDasharray="3 5"
                     vertical={false}
-                    stroke="#e8edeb"
+                    stroke={chartTheme.grid}
                   />
                   <XAxis
                     dataKey="date"
@@ -295,12 +307,12 @@ export default function ForecastPage({
                     minTickGap={48}
                     tickLine={false}
                     axisLine={false}
-                    tick={{ fill: "#768583", fontSize: 11 }}
+                    tick={{ fill: chartTheme.tick, fontSize: 11 }}
                     label={{
                       value: "Date",
                       position: "insideBottom",
                       offset: -10,
-                      fill: "#87918f",
+                      fill: chartTheme.tick,
                       fontSize: 11,
                     }}
                   />
@@ -308,12 +320,12 @@ export default function ForecastPage({
                     tickLine={false}
                     axisLine={false}
                     width={46}
-                    tick={{ fill: "#768583", fontSize: 11 }}
+                    tick={{ fill: chartTheme.tick, fontSize: 11 }}
                     label={{
                       value: "Units",
                       angle: -90,
                       position: "insideLeft",
-                      fill: "#87918f",
+                      fill: chartTheme.tick,
                       fontSize: 11,
                     }}
                   />
@@ -325,25 +337,26 @@ export default function ForecastPage({
                     ]}
                     contentStyle={{
                       borderRadius: 10,
-                      border: "1px solid #e2e8e5",
+                      border: `1px solid ${chartTheme.tooltipBorder}`,
+                      background: chartTheme.tooltipBackground,
                     }}
                   />
                   <ReferenceArea
                     x1={last.date}
                     x2={result.forecast[result.forecast.length - 1].date}
-                    fill="#e7f3ef"
-                    fillOpacity={0.6}
+                    fill={chartTheme.primarySoft}
+                    fillOpacity={0.1}
                     label={{
                       value: "FORECAST",
                       position: "insideTop",
-                      fill: "#458878",
+                      fill: chartTheme.primary,
                       fontSize: 10,
                     }}
                   />
                   <Line
                     dataKey="actual"
                     type="monotone"
-                    stroke="#2a716b"
+                    stroke={chartTheme.primaryStrong}
                     strokeWidth={2}
                     dot={false}
                     isAnimationActive={false}
@@ -351,7 +364,7 @@ export default function ForecastPage({
                   <Line
                     dataKey="predicted"
                     type="monotone"
-                    stroke="#d69446"
+                    stroke={chartTheme.accent}
                     strokeWidth={2.5}
                     strokeDasharray="6 5"
                     dot={false}
@@ -401,7 +414,17 @@ export default function ForecastPage({
               {(["wape", "mase", "mae", "rmse", "smape"] as Metric[]).map(
                 (key) => (
                   <div key={key}>
-                    <span>{key === "smape" ? "sMAPE" : key.toUpperCase()}</span>
+                    <span className="metric-label">
+                      {key === "smape" ? "sMAPE" : key.toUpperCase()}
+                      <button
+                        type="button"
+                        className="metric-help"
+                        aria-label={`About ${key === "smape" ? "sMAPE" : key.toUpperCase()}`}
+                        data-tooltip={metricHelp[key]}
+                      >
+                        <CircleHelp size={13} aria-hidden="true" />
+                      </button>
+                    </span>
                     <strong>
                       {metricValue(key, result.test_metrics[key])}
                     </strong>

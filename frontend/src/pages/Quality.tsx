@@ -5,7 +5,7 @@ import {
   Info,
   ShieldCheck,
 } from "lucide-react";
-import { Panel, Stat } from "../components";
+import { PageHeader, Panel, Stat, StatusBadge } from "../components";
 import { date, number } from "../format";
 import type { Dataset } from "../types";
 
@@ -19,16 +19,16 @@ export default function Quality({
   const warned = d.validation_status === "PASS_WITH_WARNINGS";
   return (
     <>
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">START WITH A STRONG FOUNDATION</span>
-          <h1>Data quality report</h1>
-          <p>A closer look at the data behind your decisions.</p>
-        </div>
-        <button className="button primary" onClick={onContinue}>
-          Explore dashboard <ArrowRight size={17} />
-        </button>
-      </div>
+      <PageHeader
+        eyebrow="Start with a strong foundation"
+        title="Data quality report"
+        description="Review validation results, coverage, and data readiness before modeling."
+        action={
+          <button className="button primary" onClick={onContinue}>
+            Explore dashboard <ArrowRight size={17} />
+          </button>
+        }
+      />
       <div className={`quality-banner ${warned ? "warn" : ""}`}>
         <span className="quality-icon">
           <ShieldCheck size={26} />
@@ -43,7 +43,9 @@ export default function Quality({
               : "Required fields, dates, and numeric values passed validation."}
           </p>
         </div>
-        <span className="tag">{d.validation_status.replaceAll("_", " ")}</span>
+        <StatusBadge tone={warned ? "warning" : "success"}>
+          {d.validation_status.replaceAll("_", " ")}
+        </StatusBadge>
       </div>
       <div className="stats-grid">
         <Stat

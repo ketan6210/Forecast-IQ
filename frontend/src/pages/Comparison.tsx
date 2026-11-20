@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Check, Layers3 } from "lucide-react";
-import { Panel } from "../components";
+import { EmptyState, PageHeader, Panel, StatusBadge } from "../components";
 import { date, metricValue, modelNames } from "../format";
 import type { Forecast, Metric } from "../types";
 
@@ -23,27 +23,27 @@ export default function Comparison({
   const metrics: Metric[] = ["mae", "rmse", "wape", "smape", "mase"];
   return (
     <>
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">EVIDENCE BEFORE PREFERENCE</span>
-          <h1>Model comparison</h1>
-          <p>Four baselines. The same history. An honest comparison.</p>
-        </div>
-        <button className="button secondary" onClick={onForecast}>
-          Back to forecast <ArrowRight size={16} />
-        </button>
-      </div>
-      {!result ? (
-        <div className="forecast-empty">
-          <Layers3 size={40} />
-          <h2>Every comparison starts with a forecast</h2>
-          <p>
-            Generate a forecast to train and evaluate all four baseline models.
-          </p>
-          <button className="button primary" onClick={onForecast}>
-            Create a forecast <ArrowRight size={16} />
+      <PageHeader
+        eyebrow="Evidence before preference"
+        title="Model comparison"
+        description="Compare every baseline on the same chronological evidence and understand the selection."
+        action={
+          <button className="button secondary" onClick={onForecast}>
+            Back to forecast <ArrowRight size={16} />
           </button>
-        </div>
+        }
+      />
+      {!result ? (
+        <EmptyState
+          icon={<Layers3 size={34} />}
+          title="Every comparison starts with a forecast"
+          description="Generate a forecast to train and evaluate all four baseline models."
+          action={
+            <button className="button primary" onClick={onForecast}>
+              Create a forecast <ArrowRight size={16} />
+            </button>
+          }
+        />
       ) : (
         <>
           <div className="comparison-banner">
@@ -55,9 +55,16 @@ export default function Comparison({
                 SELECTED FOR {result.store_id} / {result.product_id}
               </span>
               <h2>{modelNames[result.model]}</h2>
-              <p>{result.selection_reason}</p>
+              <p>
+                Validation WAPE:{" "}
+                <strong>
+                  {metricValue("wape", result.validation_metrics.wape)}
+                </strong>
+                <span aria-hidden="true"> · </span>
+                {result.selection_reason}
+              </p>
             </div>
-            <span className="tag">VALIDATION-BASED SELECTION</span>
+            <StatusBadge tone="success">Champion model</StatusBadge>
           </div>
           <Panel
             title="Measured baseline performance"

@@ -1,0 +1,16 @@
+export const chartTheme = {
+  primary: "#0f766e",
+  primaryStrong: "#065f46",
+  primarySoft: "#ccfbf1",
+  accent: "#d97706",
+  accentSoft: "#fef3c7",
+  indigo: "#4f46e5",
+  indigoSoft: "#e0e7ff",
+  violet: "#7c3aed",
+  rose: "#be123c",
+  grid: "#e2e8f0",
+  tick: "#64748b",
+  tooltipBorder: "#cbd5e1",
+  tooltipBackground: "#ffffff",
+  cursor: "#f1f5f9",
+} as const;

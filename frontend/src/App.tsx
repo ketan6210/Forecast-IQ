@@ -3,6 +3,7 @@ import {
   Activity,
   ArrowRight,
   BarChart3,
+  Boxes,
   Check,
   ChevronRight,
   CircleHelp,
@@ -15,11 +16,10 @@ import {
   Plus,
   ShieldCheck,
   Upload,
-  X,
 } from "lucide-react";
 import { api } from "./api";
-import { Loading } from "./components";
-import { number } from "./format";
+import { ErrorState, Loading } from "./components";
+import { date, number } from "./format";
 import Dashboard from "./pages/Dashboard";
 import Quality from "./pages/Quality";
 import ForecastPage from "./pages/ForecastPage";
@@ -28,14 +28,40 @@ import Advanced from "./pages/Advanced";
 import Inventory from "./pages/Inventory";
 import type { Dataset, Forecast, Options, Page } from "./types";
 
-const navigation = [
-  { id: "dashboard" as Page, label: "Overview", icon: LayoutDashboard },
-  { id: "quality" as Page, label: "Data quality", icon: ShieldCheck },
-  { id: "forecast" as Page, label: "Demand forecast", icon: LineChart },
-  { id: "comparison" as Page, label: "Model comparison", icon: Layers3 },
-  { id: "advanced" as Page, label: "Advanced forecasting", icon: Activity },
-  { id: "inventory" as Page, label: "Inventory optimization", icon: Layers3 },
+const navigationGroups = [
+  {
+    label: "Workspace",
+    items: [
+      { id: "dashboard" as Page, label: "Overview", icon: LayoutDashboard },
+      { id: "quality" as Page, label: "Data quality", icon: ShieldCheck },
+    ],
+  },
+  {
+    label: "Forecasting",
+    items: [
+      { id: "forecast" as Page, label: "Demand forecast", icon: LineChart },
+      { id: "comparison" as Page, label: "Model comparison", icon: Layers3 },
+      { id: "advanced" as Page, label: "Advanced forecasting", icon: Activity },
+    ],
+  },
+  {
+    label: "Inventory",
+    items: [
+      {
+        id: "inventory" as Page,
+        label: "Inventory optimization",
+        icon: Boxes,
+      },
+    ],
+  },
 ];
+const navigation = navigationGroups.flatMap((group) => group.items);
+
+function fileSize(bytes: number) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
 
 export default function App() {
   const [page, setPage] = useState<Page>("welcome");
@@ -46,6 +72,8 @@ export default function App() {
   const [restoring, setRestoring] = useState(true);
   const [error, setError] = useState("");
   const [mobileNav, setMobileNav] = useState(false);
+  const [dragActive, setDragActive] = useState(false);
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
   const [mapping, setMapping] = useState({
     date_column: "date",
@@ -89,6 +117,7 @@ export default function App() {
   }, []);
 
   async function loadData(file?: File) {
+    if (file) setUploadFile(file);
     setBusy(true);
     setError("");
     try {
@@ -141,21 +170,24 @@ export default function App() {
             Forecast<span className="brand-iq">IQ</span>
           </span>
         </button>
-        <div className="workspace-label">
-          YOUR WORKSPACE <span>01</span>
-        </div>
+        <div className="workspace-label">ANALYTICS WORKSPACE</div>
         <nav aria-label="Main navigation">
-          {navigation.map(({ id, label, icon: Icon }) => (
-            <button
-              key={id}
-              disabled={!dataset || busy}
-              className={`nav-item ${page === id ? "active" : ""}`}
-              onClick={() => navigate(id)}
-            >
-              <Icon size={19} />
-              <span>{label}</span>
-              {page === id && <span className="nav-dot" />}
-            </button>
+          {navigationGroups.map((group) => (
+            <div className="nav-group" key={group.label}>
+              <span className="nav-group-label">{group.label}</span>
+              {group.items.map(({ id, label, icon: Icon }) => (
+                <button
+                  key={id}
+                  disabled={!dataset || busy}
+                  className={`nav-item ${page === id ? "active" : ""}`}
+                  onClick={() => navigate(id)}
+                >
+                  <Icon size={18} />
+                  <span>{label}</span>
+                  {page === id && <span className="nav-dot" />}
+                </button>
+              ))}
+            </div>
           ))}
         </nav>
         <div className="sidebar-data">
@@ -186,12 +218,12 @@ export default function App() {
           <div className="phase-badge">
             <Activity size={15} /> Phase 3 <span>INVENTORY</span>
           </div>
-          <p>A clearer view of what’s next.</p>
+          <p>Forecasting, inventory analytics, and decision support.</p>
           <div className="profile">
             <span className="avatar">FQ</span>
             <div>
-              <strong>ForecastIQ workspace</strong>
-              <small>Local development</small>
+              <strong>Decision intelligence</strong>
+              <small>Local analytics workspace</small>
             </div>
           </div>
         </div>
@@ -223,10 +255,21 @@ export default function App() {
           </div>
           <div className="topbar-right">
             {dataset && (
-              <span className="dataset-pill">
+              <div className="topbar-dataset dataset-pill">
                 <span className="status-dot" />
-                {dataset.is_demo ? "Synthetic demo data" : "Uploaded dataset"}
-              </span>
+                <span>
+                  <strong>
+                    {dataset.is_demo ? "Retail demo dataset" : dataset.filename}
+                  </strong>
+                  <small>
+                    {dataset.is_demo
+                      ? "Synthetic demo data"
+                      : "Uploaded dataset"}
+                    {" · "}
+                    {date(dataset.date_min)} – {date(dataset.date_max)}
+                  </small>
+                </span>
+              </div>
             )}
             <a
               className="icon-button"
@@ -237,17 +280,11 @@ export default function App() {
             >
               <CircleHelp size={19} />
             </a>
-            <span className="top-avatar">FQ</span>
           </div>
         </header>
         <main>
           {error && (
-            <div className="alert error" role="alert">
-              <span>{error}</span>
-              <button aria-label="Dismiss error" onClick={() => setError("")}>
-                <X size={18} />
-              </button>
-            </div>
+            <ErrorState message={error} onDismiss={() => setError("")} />
           )}
           {restoring ? (
             <Loading text="Opening your workspace…" />
@@ -299,9 +336,27 @@ export default function App() {
                   </div>
                 </button>
                 <button
-                  className="start-card"
+                  className={`start-card upload-dropzone ${dragActive ? "drag-active" : ""}`}
                   disabled={busy}
                   onClick={() => fileInput.current?.click()}
+                  onDragEnter={(event) => {
+                    event.preventDefault();
+                    setDragActive(true);
+                  }}
+                  onDragOver={(event) => event.preventDefault()}
+                  onDragLeave={(event) => {
+                    event.preventDefault();
+                    if (
+                      !event.currentTarget.contains(event.relatedTarget as Node)
+                    )
+                      setDragActive(false);
+                  }}
+                  onDrop={(event) => {
+                    event.preventDefault();
+                    setDragActive(false);
+                    const file = event.dataTransfer.files[0];
+                    if (file) void loadData(file);
+                  }}
                 >
                   <div className="card-top">
                     <span className="large-icon">
@@ -311,16 +366,26 @@ export default function App() {
                       YOUR DATA, YOUR INSIGHTS
                     </span>
                   </div>
-                  <h2>Upload CSV</h2>
+                  <h2>{dragActive ? "Drop your CSV here" : "Upload CSV"}</h2>
                   <p>
                     Bring your historical retail sales. We’ll check the data
                     before you start forecasting. For Kaggle Store Item data,
                     choose train.csv.
                   </p>
-                  <div className="card-bottom">
-                    <span>Select a CSV file</span>
-                    <ArrowRight size={20} />
-                  </div>
+                  {uploadFile && busy ? (
+                    <div className="upload-file-status" role="status">
+                      <FileCheck2 size={18} />
+                      <span>
+                        <strong>{uploadFile.name}</strong>
+                        <small>{fileSize(uploadFile.size)} · validating</small>
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="card-bottom">
+                      <span>Drag and drop or browse files</span>
+                      <ArrowRight size={20} />
+                    </div>
+                  )}
                 </button>
               </div>
               <input

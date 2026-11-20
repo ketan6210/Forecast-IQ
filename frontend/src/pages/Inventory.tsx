@@ -14,8 +14,9 @@ import {
   YAxis,
 } from "recharts";
 import { api, forecastRuns } from "../api";
-import { Loading, Panel, Stat } from "../components";
+import { Loading, PageHeader, Panel, Stat } from "../components";
 import { number, shortDate } from "../format";
+import { chartTheme } from "../theme";
 import SharedAllocation from "./SharedAllocation";
 import type { Dataset } from "../types";
 import type {
@@ -87,9 +88,9 @@ function fieldsFrom(plan: InventoryPlan): InventoryFields {
   );
 }
 const value = (n: number | null | undefined, digits = 1) =>
-  n == null ? "Unavailable" : number(n, digits);
+  n == null ? "—" : number(n, digits);
 const pct = (n: number | null | undefined) =>
-  n == null ? "Unavailable" : `${number(n * 100, 1)}%`;
+  n == null ? "—" : `${number(n * 100, 1)}%`;
 
 function PolicyTable({ rows }: { rows: PolicyRow[] }) {
   return (
@@ -384,18 +385,16 @@ export default function Inventory({
 
   return (
     <div className="inventory-page">
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">FROM FORECAST TO REPLENISHMENT</span>
-          <h1>Inventory optimization</h1>
-          <p>
-            Set your operating assumptions. See the cost and service tradeoffs.
-          </p>
-        </div>
-        <span className="outline-badge">
-          <Boxes size={16} /> Phase 3
-        </span>
-      </div>
+      <PageHeader
+        eyebrow="From forecast to replenishment"
+        title="Inventory optimization"
+        description="Turn saved forecasts into replenishment decisions, simulations, scenarios, and portfolio priorities."
+        action={
+          <span className="outline-badge">
+            <Boxes size={16} /> Phase 3
+          </span>
+        }
+      />
       {error && (
         <div role="alert" className="alert error">
           {error}
@@ -414,7 +413,7 @@ export default function Inventory({
           counts or replenishment priority.
         </div>
       )}
-      {portfolio && (
+      {portfolio && runs.length > 0 && (
         <div className="stats-grid inventory-stats">
           <Stat
             label="Inventory value"
@@ -463,14 +462,20 @@ export default function Inventory({
       {loading ? (
         <Loading text="Loading saved forecasts…" />
       ) : !runs.length ? (
-        <Panel title="Start with a probabilistic forecast">
-          <p>
-            Train a series in Advanced forecasting, then return here to use its
-            saved P10/P50/P90 outlook.
-          </p>
-          <button className="button primary" onClick={onForecast}>
-            Open advanced forecasting
-          </button>
+        <Panel
+          className="inventory-empty-panel"
+          title="Inventory metrics are waiting for a probabilistic forecast."
+          subtitle="Train and save a P10/P50/P90 forecast before calculating replenishment, service, and portfolio risk metrics."
+        >
+          <div className="inventory-empty-action">
+            <p>
+              ForecastIQ will use the saved uncertainty range here without
+              creating placeholder inventory values.
+            </p>
+            <button className="button primary" onClick={onForecast}>
+              Open Advanced Forecasting
+            </button>
+          </div>
         </Panel>
       ) : (
         <Panel
@@ -968,7 +973,7 @@ export default function Inventory({
                     value={
                       simulation.cost_distribution
                         ? `${value(simulation.cost_distribution.p10)} / ${value(simulation.cost_distribution.p50)} / ${value(simulation.cost_distribution.p90)}`
-                        : "Unavailable"
+                        : "—"
                     }
                   />
                   <Stat
@@ -1021,7 +1026,7 @@ export default function Inventory({
                     isAnimationActive={false}
                     dataKey="demandRange"
                     name="Demand P10–P90"
-                    fill="#dcece6"
+                    fill={chartTheme.primarySoft}
                     stroke="none"
                   />
                   <Line
@@ -1029,7 +1034,7 @@ export default function Inventory({
                     dataKey="p50"
                     name="Demand P50"
                     dot={false}
-                    stroke="#238674"
+                    stroke={chartTheme.primary}
                     strokeWidth={2}
                   />
                   {simulation && (
@@ -1038,7 +1043,7 @@ export default function Inventory({
                         isAnimationActive={false}
                         dataKey="inventoryRange"
                         name="Inventory P10–P90"
-                        fill="#e3e8fa"
+                        fill={chartTheme.indigoSoft}
                         fillOpacity={0.5}
                         stroke="none"
                       />
@@ -1047,7 +1052,7 @@ export default function Inventory({
                         dataKey="inventory"
                         name="Mean on-hand inventory"
                         dot={false}
-                        stroke="#576bc2"
+                        stroke={chartTheme.indigo}
                         strokeWidth={2}
                       />
                       <Line
@@ -1055,21 +1060,21 @@ export default function Inventory({
                         dataKey="position"
                         name="Mean inventory position"
                         dot={false}
-                        stroke="#8a5da5"
+                        stroke={chartTheme.violet}
                         strokeDasharray="4 3"
                       />
                       <Bar
                         isAnimationActive={false}
                         dataKey="receipts"
                         name="Mean replenishment received"
-                        fill="#dbb061"
+                        fill={chartTheme.accentSoft}
                         maxBarSize={10}
                       />
                     </>
                   )}
                   <ReferenceLine
                     y={plan.reorder_point}
-                    stroke="#c87643"
+                    stroke={chartTheme.accent}
                     strokeDasharray="5 3"
                     label={{
                       value: "Reorder point (position)",
@@ -1078,7 +1083,7 @@ export default function Inventory({
                   />
                   <ReferenceLine
                     y={plan.safety_stock}
-                    stroke="#a55772"
+                    stroke={chartTheme.rose}
                     strokeDasharray="3 3"
                     label={{
                       value: "Safety stock",
@@ -1147,16 +1152,14 @@ export default function Inventory({
                             k === "lead_time"
                               ? scenario.baseline.recommendation.inputs
                                   .lead_time
-                              : (scenario.baseline.recommendation[k] ??
-                                  "Unavailable"),
+                              : (scenario.baseline.recommendation[k] ?? "—"),
                           )}
                         </td>
                         <td>
                           {String(
                             k === "lead_time"
                               ? fields.lead_time
-                              : (scenario.scenario.recommendation[k] ??
-                                  "Unavailable"),
+                              : (scenario.scenario.recommendation[k] ?? "—"),
                           )}
                         </td>
                       </tr>
@@ -1208,301 +1211,313 @@ export default function Inventory({
           )}
         </>
       )}
-      <Panel
-        title="Replenishment queue"
-        subtitle="Latest plan per SKU / store / location. Priority: high risk, then immediate supply shortfall, reorder-point deficit and forecast volume."
-        action={
-          <a
-            className="button secondary"
-            href={`/api/inventory/export?${datasetQuery}`}
-            download
-          >
-            <Download size={15} /> Export CSV
-          </a>
-        }
-      >
-        <fieldset disabled={!!busy} className="inventory-fieldset">
-          <div className="inventory-form-grid">
-            <label>
-              <span>Search SKU or location</span>
-              <input
-                aria-label="Search inventory"
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                  setOffset(0);
-                }}
-              />
-            </label>
-            <label>
-              <span>Risk filter</span>
-              <select
-                aria-label="Risk filter"
-                value={risk}
-                onChange={(e) => {
-                  setRisk(e.target.value);
-                  setOffset(0);
-                }}
+      {runs.length > 0 && (
+        <>
+          <Panel
+            title="Replenishment queue"
+            subtitle="Latest plan per SKU / store / location. Priority: high risk, then immediate supply shortfall, reorder-point deficit and forecast volume."
+            action={
+              <a
+                className="button secondary"
+                href={`/api/inventory/export?${datasetQuery}`}
+                download
               >
-                <option value="">All risks</option>
-                {["high", "medium", "low"].map((v) => (
-                  <option key={v}>{v}</option>
-                ))}
-              </select>
-            </label>
-            <label>
-              <span>Sort recommendations</span>
-              <select
-                aria-label="Sort recommendations"
-                value={sort}
-                onChange={(e) => {
-                  setSort(e.target.value);
-                  setOffset(0);
-                }}
-              >
-                <option value="priority">Operational priority</option>
-                <option value="sku">SKU</option>
-                <option value="quantity">Order quantity, largest first</option>
-              </select>
-            </label>
-            <label className="inventory-check">
-              <input
-                type="checkbox"
-                checked={reorderOnly}
-                onChange={(e) => {
-                  setReorderOnly(e.target.checked);
-                  setOffset(0);
-                }}
-              />{" "}
-              Reorder needed only
-            </label>
-          </div>
-        </fieldset>
-        <div className="table-scroll">
-          <table>
-            <thead>
-              <tr>
-                {[
-                  "SKU / location",
-                  "On-hand",
-                  "Position",
-                  "LT P50",
-                  "LT P90",
-                  "Safety stock",
-                  "ROP",
-                  "EOQ",
-                  "Order qty",
-                  "Expedite units",
-                  "Risk",
-                  "Reorder?",
-                ].map((h) => (
-                  <th key={h}>{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((r) => (
-                <tr key={r.plan_id}>
-                  <td>
-                    <button
-                      className="inventory-row-link"
-                      disabled={!!busy || loading}
-                      onClick={() =>
-                        void action(
-                          "Opening inventory plan…",
-                          async (signal) => {
-                            const next = await api<InventoryPlan>(
-                              `/inventory/plans/${r.plan_id}`,
-                              { signal },
-                            );
-                            if (!signal.aborted) selectPlan(next);
-                          },
-                        )
-                      }
-                    >
-                      {r.sku_id} / {r.location_id}
-                    </button>
-                  </td>
-                  {[
-                    r.on_hand_inventory,
-                    r.inventory_position,
-                    r.p50_lead_time_demand,
-                    r.p90_lead_time_demand,
-                    r.safety_stock,
-                    r.reorder_point,
-                    r.eoq,
-                    r.recommended_order_quantity,
-                    r.expedite_quantity,
-                  ].map((v, i) => (
-                    <td key={i}>{value(v)}</td>
-                  ))}
-                  <td>
-                    <span className={`risk-pill ${r.risk_level}`}>
-                      {r.supply_timing_note ? r.risk_level : "Recalculate"}
-                    </span>
-                  </td>
-                  <td>{r.reorder_needed ? "Yes" : "No"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {!rows.length && (
-          <p>
-            No matching recommendations. Calculate a plan or import inventory
-            inputs.
-          </p>
-        )}
-        <div className="inventory-actions">
-          <button
-            className="button secondary"
-            disabled={offset === 0}
-            onClick={() => setOffset(Math.max(0, offset - 50))}
+                <Download size={15} /> Export CSV
+              </a>
+            }
           >
-            Previous
-          </button>
-          <span>
-            {total} matching plans · {offset + 1}–{Math.min(offset + 50, total)}
-          </span>
-          <button
-            className="button secondary"
-            disabled={offset + 50 >= total}
-            onClick={() => setOffset(offset + 50)}
-          >
-            Next
-          </button>
-          <button
-            className="button secondary"
-            disabled={!!busy}
-            onClick={() => importInput.current?.click()}
-          >
-            Import inventory CSV
-          </button>
-          <input
-            ref={importInput}
-            type="file"
-            accept=".csv"
-            aria-label="Import inventory CSV"
-            hidden
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (!file) return;
-              void action("Importing inventory inputs…", async (signal) => {
-                const data = new FormData();
-                data.append("file", file);
-                const result = await api<{
-                  successful: number;
-                  failed: number;
-                  errors: { row: number; error: string }[];
-                }>("/inventory/import", { method: "POST", body: data, signal });
-                if (!signal.aborted) {
-                  setNotice(
-                    `${result.successful} plans saved; ${result.failed} rows rejected. ${result.errors.map((r) => `Row ${r.row}: ${r.error}`).join(" ")}`,
-                  );
-                  setRefresh((n) => n + 1);
-                }
-              });
-              e.target.value = "";
-            }}
-          />
-        </div>
-        <details>
-          <summary>CSV input format and portfolio assumptions</summary>
-          <p>
-            Required columns: forecast_run_id, on_hand_inventory, lead_time.
-            Optional columns use the input names in API documentation, including
-            warehouse_id, annual_demand, unit_cost, ordering_cost and
-            stockout_cost. Up to 1,000 rows / 2 MB per batch. Each row uses an
-            existing Phase 2 forecast.
-          </p>
-          {portfolio?.notes.map((s) => (
-            <p key={s}>{s}</p>
-          ))}
-        </details>
-      </Panel>
-      <SharedAllocation datasetId={dataset.dataset_id} refresh={refresh} />
-      {segmentation && (
-        <Panel
-          title="ABC / XYZ segmentation"
-          subtitle="Consumption value and demand variability provide context for reviewing your portfolio."
-        >
-          <div className="inventory-form-grid">
-            {Object.entries(thresholds).map(([key, v]) => (
-              <label key={key}>
-                <span>
-                  {key.replace("_threshold", "").toUpperCase()} threshold
-                </span>
-                <input
-                  aria-label={`${key} threshold`}
-                  type="number"
-                  min="0"
-                  step="0.05"
-                  value={v}
-                  onChange={(e) =>
-                    setThresholds((previous) => ({
-                      ...previous,
-                      [key]: Number(e.target.value),
-                    }))
-                  }
-                />
-              </label>
-            ))}
-          </div>
-          <div className="abc-matrix">
-            {["A", "B", "C"].flatMap((a) =>
-              ["X", "Y", "Z"].map((x) => (
-                <div key={a + x}>
-                  <strong>{a + x}</strong>
-                  <span>
-                    {segmentation.matrix_distribution[a + x] ?? 0} series
-                  </span>
-                </div>
-              )),
-            )}
-          </div>
-          <p>
-            ABC distribution:{" "}
-            {Object.entries(segmentation.abc_distribution)
-              .map(([k, v]) => `${k}: ${v}`)
-              .join(" · ") || "No plans"}
-            . Missing comparable annual value: {segmentation.excluded_from_abc}.
-          </p>
-          <details>
-            <summary>Classification details</summary>
+            <fieldset disabled={!!busy} className="inventory-fieldset">
+              <div className="inventory-form-grid">
+                <label>
+                  <span>Search SKU or location</span>
+                  <input
+                    aria-label="Search inventory"
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                      setOffset(0);
+                    }}
+                  />
+                </label>
+                <label>
+                  <span>Risk filter</span>
+                  <select
+                    aria-label="Risk filter"
+                    value={risk}
+                    onChange={(e) => {
+                      setRisk(e.target.value);
+                      setOffset(0);
+                    }}
+                  >
+                    <option value="">All risks</option>
+                    {["high", "medium", "low"].map((v) => (
+                      <option key={v}>{v}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  <span>Sort recommendations</span>
+                  <select
+                    aria-label="Sort recommendations"
+                    value={sort}
+                    onChange={(e) => {
+                      setSort(e.target.value);
+                      setOffset(0);
+                    }}
+                  >
+                    <option value="priority">Operational priority</option>
+                    <option value="sku">SKU</option>
+                    <option value="quantity">
+                      Order quantity, largest first
+                    </option>
+                  </select>
+                </label>
+                <label className="inventory-check">
+                  <input
+                    type="checkbox"
+                    checked={reorderOnly}
+                    onChange={(e) => {
+                      setReorderOnly(e.target.checked);
+                      setOffset(0);
+                    }}
+                  />{" "}
+                  Reorder needed only
+                </label>
+              </div>
+            </fieldset>
             <div className="table-scroll">
               <table>
                 <thead>
                   <tr>
-                    <th>SKU / location</th>
-                    <th>Annual consumption value</th>
-                    <th>Demand CV</th>
-                    <th>ABC / XYZ</th>
+                    {[
+                      "SKU / location",
+                      "On-hand",
+                      "Position",
+                      "LT P50",
+                      "LT P90",
+                      "Safety stock",
+                      "ROP",
+                      "EOQ",
+                      "Order qty",
+                      "Expedite units",
+                      "Risk",
+                      "Reorder?",
+                    ].map((h) => (
+                      <th key={h}>{h}</th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {segmentation.items.map((r, i) => (
-                    <tr key={i}>
+                  {rows.map((r) => (
+                    <tr key={r.plan_id}>
                       <td>
-                        {r.sku_id} / {r.location_id}
+                        <button
+                          className="inventory-row-link"
+                          disabled={!!busy || loading}
+                          onClick={() =>
+                            void action(
+                              "Opening inventory plan…",
+                              async (signal) => {
+                                const next = await api<InventoryPlan>(
+                                  `/inventory/plans/${r.plan_id}`,
+                                  { signal },
+                                );
+                                if (!signal.aborted) selectPlan(next);
+                              },
+                            )
+                          }
+                        >
+                          {r.sku_id} / {r.location_id}
+                        </button>
                       </td>
-                      <td>{value(r.annual_consumption_value)}</td>
-                      <td>{value(r.cv, 3)}</td>
+                      {[
+                        r.on_hand_inventory,
+                        r.inventory_position,
+                        r.p50_lead_time_demand,
+                        r.p90_lead_time_demand,
+                        r.safety_stock,
+                        r.reorder_point,
+                        r.eoq,
+                        r.recommended_order_quantity,
+                        r.expedite_quantity,
+                      ].map((v, i) => (
+                        <td key={i}>{value(v)}</td>
+                      ))}
                       <td>
-                        {r.matrix ??
-                          `${r.abc_class ?? "?"}${r.xyz_class ?? "?"}`}
+                        <span className={`risk-pill ${r.risk_level}`}>
+                          {r.supply_timing_note ? r.risk_level : "Recalculate"}
+                        </span>
                       </td>
+                      <td>{r.reorder_needed ? "Yes" : "No"}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <ul>
-              {segmentation.notes.map((s) => (
-                <li key={s}>{s}</li>
+            {!rows.length && (
+              <p>
+                No matching recommendations. Calculate a plan or import
+                inventory inputs.
+              </p>
+            )}
+            <div className="inventory-actions">
+              <button
+                className="button secondary"
+                disabled={offset === 0}
+                onClick={() => setOffset(Math.max(0, offset - 50))}
+              >
+                Previous
+              </button>
+              <span>
+                {total} matching plans · {offset + 1}–
+                {Math.min(offset + 50, total)}
+              </span>
+              <button
+                className="button secondary"
+                disabled={offset + 50 >= total}
+                onClick={() => setOffset(offset + 50)}
+              >
+                Next
+              </button>
+              <button
+                className="button secondary"
+                disabled={!!busy}
+                onClick={() => importInput.current?.click()}
+              >
+                Import inventory CSV
+              </button>
+              <input
+                ref={importInput}
+                type="file"
+                accept=".csv"
+                aria-label="Import inventory CSV"
+                hidden
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  void action("Importing inventory inputs…", async (signal) => {
+                    const data = new FormData();
+                    data.append("file", file);
+                    const result = await api<{
+                      successful: number;
+                      failed: number;
+                      errors: { row: number; error: string }[];
+                    }>("/inventory/import", {
+                      method: "POST",
+                      body: data,
+                      signal,
+                    });
+                    if (!signal.aborted) {
+                      setNotice(
+                        `${result.successful} plans saved; ${result.failed} rows rejected. ${result.errors.map((r) => `Row ${r.row}: ${r.error}`).join(" ")}`,
+                      );
+                      setRefresh((n) => n + 1);
+                    }
+                  });
+                  e.target.value = "";
+                }}
+              />
+            </div>
+            <details>
+              <summary>CSV input format and portfolio assumptions</summary>
+              <p>
+                Required columns: forecast_run_id, on_hand_inventory, lead_time.
+                Optional columns use the input names in API documentation,
+                including warehouse_id, annual_demand, unit_cost, ordering_cost
+                and stockout_cost. Up to 1,000 rows / 2 MB per batch. Each row
+                uses an existing Phase 2 forecast.
+              </p>
+              {portfolio?.notes.map((s) => (
+                <p key={s}>{s}</p>
               ))}
-            </ul>
-          </details>
-        </Panel>
+            </details>
+          </Panel>
+          <SharedAllocation datasetId={dataset.dataset_id} refresh={refresh} />
+          {segmentation && (
+            <Panel
+              title="ABC / XYZ segmentation"
+              subtitle="Consumption value and demand variability provide context for reviewing your portfolio."
+            >
+              <div className="inventory-form-grid">
+                {Object.entries(thresholds).map(([key, v]) => (
+                  <label key={key}>
+                    <span>
+                      {key.replace("_threshold", "").toUpperCase()} threshold
+                    </span>
+                    <input
+                      aria-label={`${key} threshold`}
+                      type="number"
+                      min="0"
+                      step="0.05"
+                      value={v}
+                      onChange={(e) =>
+                        setThresholds((previous) => ({
+                          ...previous,
+                          [key]: Number(e.target.value),
+                        }))
+                      }
+                    />
+                  </label>
+                ))}
+              </div>
+              <div className="abc-matrix">
+                {["A", "B", "C"].flatMap((a) =>
+                  ["X", "Y", "Z"].map((x) => (
+                    <div key={a + x}>
+                      <strong>{a + x}</strong>
+                      <span>
+                        {segmentation.matrix_distribution[a + x] ?? 0} series
+                      </span>
+                    </div>
+                  )),
+                )}
+              </div>
+              <p>
+                ABC distribution:{" "}
+                {Object.entries(segmentation.abc_distribution)
+                  .map(([k, v]) => `${k}: ${v}`)
+                  .join(" · ") || "No plans"}
+                . Missing comparable annual value:{" "}
+                {segmentation.excluded_from_abc}.
+              </p>
+              <details>
+                <summary>Classification details</summary>
+                <div className="table-scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>SKU / location</th>
+                        <th>Annual consumption value</th>
+                        <th>Demand CV</th>
+                        <th>ABC / XYZ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {segmentation.items.map((r, i) => (
+                        <tr key={i}>
+                          <td>
+                            {r.sku_id} / {r.location_id}
+                          </td>
+                          <td>{value(r.annual_consumption_value)}</td>
+                          <td>{value(r.cv, 3)}</td>
+                          <td>
+                            {r.matrix ??
+                              `${r.abc_class ?? "?"}${r.xyz_class ?? "?"}`}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <ul>
+                  {segmentation.notes.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </details>
+            </Panel>
+          )}
+        </>
       )}
     </div>
   );

@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, CalendarDays, SlidersHorizontal } from "lucide-react";
 import { api } from "../api";
-import { Bars, Loading, Panel, SalesChart, Stat } from "../components";
+import {
+  Bars,
+  ErrorState,
+  Loading,
+  PageHeader,
+  Panel,
+  SalesChart,
+  Stat,
+} from "../components";
 import { date, number } from "../format";
+import { chartTheme } from "../theme";
 import type { Analytics, Dataset, Options } from "../types";
 
 export default function Dashboard({
@@ -54,18 +63,16 @@ export default function Dashboard({
     }));
   return (
     <>
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">THE BIG PICTURE</span>
-          <h1>Demand overview</h1>
-          <p>
-            Your sales story, from the daily details to the seasonal patterns.
-          </p>
-        </div>
-        <button className="button primary" onClick={onForecast}>
-          Create a forecast <ArrowRight size={17} />
-        </button>
-      </div>
+      <PageHeader
+        eyebrow="The big picture"
+        title="Demand overview"
+        description="Explore sales performance, demand shape, and seasonal patterns across your selected data."
+        action={
+          <button className="button primary" onClick={onForecast}>
+            Create a forecast <ArrowRight size={17} />
+          </button>
+        }
+      />
       <div className="filter-bar">
         <SlidersHorizontal size={18} />
         <label>
@@ -149,9 +156,7 @@ export default function Dashboard({
       {loading ? (
         <Loading />
       ) : error ? (
-        <div className="alert error" role="alert">
-          {error}
-        </div>
+        <ErrorState message={error} />
       ) : (
         data && (
           <>
@@ -283,7 +288,7 @@ export default function Dashboard({
                 title="Sales by category"
                 subtitle="The categories driving demand"
               >
-                <Bars data={data.sales_by_category} color="#70918d" />
+                <Bars data={data.sales_by_category} color={chartTheme.indigo} />
               </Panel>
             </div>
             <div className="two-columns">
@@ -297,7 +302,10 @@ export default function Dashboard({
                 title="Monthly seasonality"
                 subtitle="Average observed demand by calendar month"
               >
-                <Bars data={data.monthly_seasonality} color="#97aa77" />
+                <Bars
+                  data={data.monthly_seasonality}
+                  color={chartTheme.accent}
+                />
               </Panel>
             </div>
             <Panel

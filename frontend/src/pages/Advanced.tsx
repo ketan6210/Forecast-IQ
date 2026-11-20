@@ -14,8 +14,9 @@ import {
   YAxis,
 } from "recharts";
 import { api, forecastRuns } from "../api";
-import { Loading, Panel, Stat } from "../components";
+import { Loading, PageHeader, Panel, Stat } from "../components";
 import { date, metricValue, number, shortDate } from "../format";
+import { chartTheme } from "../theme";
 import type { Dataset, Metric, Options } from "../types";
 import type { AdvancedRun, SavedRun, SeriesResult } from "../advancedTypes";
 import { advancedNames as names } from "../advancedTypes";
@@ -232,19 +233,16 @@ export default function Advanced({
 
   return (
     <>
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">ADVANCED FORECASTING · PHASE 2</span>
-          <h1>Forecast quality lab</h1>
-          <p>
-            Compare models over time. See the uncertainty. Understand the
-            drivers.
-          </p>
-        </div>
-        <span className="outline-badge">
-          <Waves size={16} /> P10 · P50 · P90
-        </span>
-      </div>
+      <PageHeader
+        eyebrow="Advanced forecasting · Phase 2"
+        title="Forecast quality lab"
+        description="Compare models over time, inspect uncertainty, and understand the drivers behind each forecast."
+        action={
+          <span className="outline-badge">
+            <Waves size={16} /> P10 · P50 · P90
+          </span>
+        }
+      />
       {saved.length > 0 && (
         <label className="saved-runs">
           <span>Open a saved training run</span>
@@ -573,14 +571,14 @@ export default function Advanced({
                     dataKey="interval"
                     name="P10–P90"
                     stroke="none"
-                    fill="#90b7a1"
+                    fill={chartTheme.primarySoft}
                     fillOpacity={0.3}
                     isAnimationActive={false}
                   />
                   <Line
                     dataKey="actual"
                     name="Actual"
-                    stroke="#28766d"
+                    stroke={chartTheme.primary}
                     dot={false}
                     strokeWidth={2}
                     isAnimationActive={false}
@@ -588,7 +586,7 @@ export default function Advanced({
                   <Line
                     dataKey="p50"
                     name="P50"
-                    stroke="#c58b41"
+                    stroke={chartTheme.accent}
                     strokeDasharray="6 4"
                     strokeWidth={2}
                     dot={false}
@@ -815,14 +813,14 @@ export default function Advanced({
                       <Line
                         dataKey="actual"
                         name="Actual"
-                        stroke="#28766d"
+                        stroke={chartTheme.primary}
                         dot={false}
                         isAnimationActive={false}
                       />
                       <Line
                         dataKey="predicted"
                         name="Predicted"
-                        stroke="#c58b41"
+                        stroke={chartTheme.accent}
                         strokeDasharray="5 4"
                         dot={false}
                         isAnimationActive={false}
@@ -995,7 +993,7 @@ export default function Advanced({
                           data={explanation.summary_samples.filter(
                             (item) => item.feature === feature,
                           )}
-                          fill="#528d72"
+                          fill={chartTheme.primary}
                           isAnimationActive={false}
                         />
                       </ScatterChart>
@@ -1054,14 +1052,14 @@ export default function Advanced({
                     <Line
                       dataKey="acf"
                       name="ACF"
-                      stroke="#28766d"
+                      stroke={chartTheme.primary}
                       dot={false}
                       isAnimationActive={false}
                     />
                     <Line
                       dataKey="pacf"
                       name="PACF"
-                      stroke="#c58b41"
+                      stroke={chartTheme.accent}
                       dot={false}
                       isAnimationActive={false}
                     />
